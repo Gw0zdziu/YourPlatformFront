@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import {RouterModule, Routes} from '@angular/router';
-import {AppComponent} from 'src/app/app.component';
 import {HomeComponent} from 'src/app/pages/home/home.component';
 import {CategoryComponent} from 'src/app/pages/category/category.component';
 import {GameComponent} from 'src/app/pages/game/game.component';

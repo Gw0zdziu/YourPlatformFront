@@ -1,8 +1,6 @@
 import {AfterViewInit, ChangeDetectorRef, Component, OnInit, ViewChild} from '@angular/core';
 import {BreakpointObserver, Breakpoints} from '@angular/cdk/layout';
-import {MatSidenav, MatSidenavContainer} from '@angular/material/sidenav';
-import {readableStreamLikeToAsyncGenerator} from 'rxjs/internal/util/isReadableStreamLike';
-import {B} from '@angular/cdk/keycodes';
+import {MatSidenav} from '@angular/material/sidenav';
 
 @Component({
   selector: 'app-root',

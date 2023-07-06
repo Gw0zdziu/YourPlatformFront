@@ -1,0 +1,49 @@
+.toolbar {
+  display: flex;
+  justify-content: space-between;
+  font-size: 16px;
+  color: #fff;
+  background: #004a9f;
+}
+
+.toolbar-content{
+  display: flex;
+  align-items: center;
+}
+
+.content-auth{
+  margin-right: 16px;
+}
+
+mat-sidenav {
+  width: 200px;
+  margin: 16px;
+  border-radius: 16px;
+  background: #004a9f;
+}
+
+.content{
+  height: 100vh;
+  margin: 16px;
+  border-radius: 16px;
+  padding: 16px;
+}
+
+mat-sidenav-container {
+  height: calc(100vh - 65px);
+}
+
+.nav-item{
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  column-gap: 16px;
+}
+
+.nav-name, .item-icon{
+  color: #fff;
+}
+
+
+
+

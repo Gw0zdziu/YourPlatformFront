@@ -1,6 +1,7 @@
 import {AfterViewInit, ChangeDetectorRef, Component, ViewChild} from '@angular/core';
 import {BreakpointObserver, Breakpoints} from '@angular/cdk/layout';
 import {MatSidenav} from '@angular/material/sidenav';
+import {User} from 'src/app/shared/models/user/User';
 
 @Component({
   selector: 'app-root',
@@ -8,31 +9,26 @@ import {MatSidenav} from '@angular/material/sidenav';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements AfterViewInit{
-  title = 'YourPlatformFront';
-  menuButtonIsVisible = false;
-  backdropSideNav  = false;
-  marginContent = 16;
-  @ViewChild('sidenav')
-  sidenav!: MatSidenav;
+  @ViewChild('sidenav') sidenav!: MatSidenav;
+  marginContent = 32;
+  isMobile: boolean;
+  user: User | null;
   constructor(
     private  breakpointObserver:BreakpointObserver,
-    private cdref: ChangeDetectorRef
+    private cdref: ChangeDetectorRef,
   ) {}
 
-
   ngAfterViewInit() {
-    this.breakpointObserver.observe([Breakpoints.Large, Breakpoints.Small]).subscribe(result => {
-      if (result.breakpoints[Breakpoints.Large]){
-        this.menuButtonIsVisible = false;
-        this.sidenav.mode = 'side'
-        this.sidenav.open().then();
-        this.marginContent = 32;
-      }
-      if (result.breakpoints[Breakpoints.Small]){
-        this.menuButtonIsVisible = true;
+    this.breakpointObserver.observe([Breakpoints.Small, Breakpoints.HandsetPortrait]).subscribe(result => {
+      this.isMobile = result.matches;
+      if (result.matches){
         this.sidenav.mode = 'over';
         this.sidenav.close().then();
         this.marginContent = 16;
+      }else {
+        this.sidenav.open().then();
+        this.sidenav.mode = 'side'
+        this.marginContent = 32
       }
     })
     this.cdref.detectChanges();

@@ -1,29 +1,40 @@
 <div style="display: flex; flex-direction: column; justify-content: center">
   <mat-toolbar class="toolbar" color="primary">
     <div class="toolbar-content">
-      <button *ngIf="menuButtonIsVisible" mat-icon-button (click)="sidenav.toggle()"  aria-label="Example icon button with a menu icon">
+      <button *ngIf="sidenav.mode === 'over'" mat-icon-button (click)="sidenav.toggle()"  aria-label="Example icon button with a menu icon">
         <mat-icon class="icon-menu">menu</mat-icon>
       </button>
       <span>YourPlatform</span>
     </div>
-    <div class="content-auth">Zaloguj</div>
+    <button mat-button [matMenuTriggerFor]="menu" class="content-auth">Konto</button>
+    <mat-menu #menu="matMenu">
+      <button mat-menu-item [routerLink]="['auth','login']">Logowanie</button>
+      <button mat-menu-item [routerLink]="['auth','register']">Rejestracja</button>
+    </mat-menu>
+
   </mat-toolbar>
-  <mat-sidenav-container [hasBackdrop]="backdropSideNav">
-    <mat-sidenav #sidenav  >
+  <mat-sidenav-container >
+    <mat-sidenav #sidenav opened >
       <mat-list class="nav">
-        <mat-list-item [routerLink]="['home']">
+        <mat-list-item (click)="isMobile && sidenav.toggle()" [routerLink]="['']">
           <div class="nav-item" >
-            <mat-icon class="item-icon">dashboard</mat-icon>
-            <span class="nav-name">Szczegóły</span>
+            <mat-icon class="item-icon">home</mat-icon>
+            <span class="nav-name">Informacje</span>
           </div>
         </mat-list-item>
-        <mat-list-item [routerLink]="['category']">
+        <mat-list-item *ngIf="user" (click)="isMobile && sidenav.toggle()" [routerLink]="['home']">
+          <div class="nav-item" >
+            <mat-icon class="item-icon">dashboard</mat-icon>
+            <span class="nav-name">Podsumowanie</span>
+          </div>
+        </mat-list-item>
+        <mat-list-item *ngIf="user" (click)="isMobile && sidenav.toggle()" [routerLink]="['category','list']">
           <div class="nav-item" >
             <mat-icon class="item-icon">category</mat-icon>
             <span class="nav-name">Kategorie</span>
           </div>
         </mat-list-item>
-        <mat-list-item [routerLink]="['game']">
+        <mat-list-item *ngIf="user" (click)="isMobile && sidenav.toggle()" [routerLink]="['game', 'list']">
           <div class="nav-item" >
             <mat-icon class="item-icon">sports_esports</mat-icon>
             <span class="nav-name">Gry</span>

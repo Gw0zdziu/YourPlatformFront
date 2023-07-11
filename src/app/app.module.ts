@@ -11,6 +11,7 @@ import {AuthModule} from 'src/app/pages/auth/auth.module';
 import {CategoryModule} from 'src/app/pages/category/category.module';
 import {GameModule} from 'src/app/pages/game/game.module';
 import { InformationComponent } from './pages/information/information.component';
+import {HttpClientModule} from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import { InformationComponent } from './pages/information/information.component'
     AppRoutingModule,
     AuthModule,
     CategoryModule,
-    GameModule
+    GameModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

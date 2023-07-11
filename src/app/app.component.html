@@ -1,5 +1,5 @@
 <div style="display: flex; flex-direction: column; justify-content: center">
-  <mat-toolbar class="toolbar" color="primary">
+  <mat-toolbar class="toolbar " color="primary">
     <div class="toolbar-content">
       <button *ngIf="sidenav.mode === 'over'" mat-icon-button (click)="sidenav.toggle()"  aria-label="Example icon button with a menu icon">
         <mat-icon class="icon-menu">menu</mat-icon>
@@ -14,7 +14,7 @@
 
   </mat-toolbar>
   <mat-sidenav-container >
-    <mat-sidenav #sidenav opened >
+    <mat-sidenav class="side-nav" #sidenav opened >
       <mat-list class="nav">
         <mat-list-item (click)="isMobile && sidenav.toggle()" [routerLink]="['']">
           <div class="nav-item" >

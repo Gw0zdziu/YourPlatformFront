@@ -1,4 +1,4 @@
-import {AfterViewInit, ChangeDetectorRef, Component, ViewChild, ViewEncapsulation} from '@angular/core';
+import {AfterViewInit, ChangeDetectorRef, Component, ViewChild} from '@angular/core';
 import {BreakpointObserver, Breakpoints} from '@angular/cdk/layout';
 import {MatSidenav} from '@angular/material/sidenav';
 import {User} from 'src/app/shared/models/user/User';
@@ -7,7 +7,6 @@ import {User} from 'src/app/shared/models/user/User';
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css'],
-  /*encapsulation: ViewEncapsulation.None*/
 })
 export class AppComponent implements AfterViewInit{
   @ViewChild('sidenav') sidenav!: MatSidenav;

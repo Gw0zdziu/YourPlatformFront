@@ -4,7 +4,6 @@ import {BehaviorSubject, map, Observable} from 'rxjs';
 import {HttpClient} from '@angular/common/http';
 import {environment} from 'src/environments/environment.development';
 import {SignIn} from 'src/app/shared/models/http/auth/SignIn';
-import {AccessToken} from 'src/app/shared/models/http/auth/AccessToken';
 import {User} from 'src/app/shared/models/user/User';
 
 const apiUrl = environment.apiUrl;

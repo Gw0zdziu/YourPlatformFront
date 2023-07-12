@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-import {SharedModule} from 'src/app/shared/shared.module';
 import {Subject} from 'rxjs';
 
 @Injectable({

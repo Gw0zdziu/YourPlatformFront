@@ -32,7 +32,7 @@ export class LoginComponent implements OnInit{
     this.authSvc.signIn(credentials)
       .pipe(first())
       .subscribe({
-        next: x => {
+        next: () => {
           const returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/'
           this.router.navigateByUrl(returnUrl);
         },

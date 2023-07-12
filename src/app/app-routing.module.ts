@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import {RouterModule, Routes} from '@angular/router';
 import {HomeComponent} from 'src/app/pages/home/home.component';
 import {InformationComponent} from 'src/app/pages/information/information.component';
+import {authGuard} from "./shared/guards/auth.guard";
 
 const ROUTES: Routes = [
   {
@@ -15,7 +16,8 @@ const ROUTES: Routes = [
   },
   {
     path: 'category',
-    loadChildren: () => import('./pages/category/category.module').then(x => x.CategoryModule)
+    loadChildren: () => import('./pages/category/category.module').then(x => x.CategoryModule),
+    canActivate: [authGuard]
   },
   {
     path: 'game',

@@ -3,7 +3,7 @@ import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {AuthService} from 'src/app/shared/services/http/auth/auth.service';
 import {SignIn} from 'src/app/shared/models/http/auth/SignIn';
 import {first} from 'rxjs';
-import {Router} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -16,7 +16,8 @@ export class LoginComponent implements OnInit{
   constructor(
     private fb: FormBuilder,
     private authSvc: AuthService,
-    private router: Router
+    private router: Router,
+    private route: ActivatedRoute,
   ) {}
 
   ngOnInit() {
@@ -32,8 +33,8 @@ export class LoginComponent implements OnInit{
       .pipe(first())
       .subscribe({
         next: x => {
-          this.router.navigate([''])
-          console.log(x);
+          const returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/'
+          this.router.navigateByUrl(returnUrl);
         },
         error: err => console.log(err),
       })

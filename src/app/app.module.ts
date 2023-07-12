@@ -11,7 +11,9 @@ import {AuthModule} from 'src/app/pages/auth/auth.module';
 import {CategoryModule} from 'src/app/pages/category/category.module';
 import {GameModule} from 'src/app/pages/game/game.module';
 import { InformationComponent } from './pages/information/information.component';
-import {HttpClientModule} from '@angular/common/http';
+import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
+import {JwtInterceptor} from 'src/app/shared/helpers/interceptors/jwt/jwt.interceptor';
+import {LoaderInterceptor} from 'src/app/shared/helpers/interceptors/loader/loader.interceptor';
 
 @NgModule({
   declarations: [
@@ -31,7 +33,14 @@ import {HttpClientModule} from '@angular/common/http';
     GameModule,
     HttpClientModule
   ],
-  providers: [],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true
+    },
+    {
+      provide: HTTP_INTERCEPTORS, useClass: LoaderInterceptor, multi: true
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,19 +1,23 @@
 <div style="display: flex; flex-direction: column; justify-content: center">
-  <mat-toolbar class="toolbar " color="primary">
+  <mat-toolbar class="toolbar " >
     <div class="toolbar-content">
       <button *ngIf="sidenav.mode === 'over'" mat-icon-button (click)="sidenav.toggle()"  aria-label="Example icon button with a menu icon">
         <mat-icon class="icon-menu">menu</mat-icon>
       </button>
       <span>YourPlatform</span>
     </div>
-    <button mat-button [matMenuTriggerFor]="menu" class="content-auth">Konto</button>
-    <mat-menu #menu="matMenu">
-      <button mat-menu-item [routerLink]="['auth','login']">Logowanie</button>
-      <button mat-menu-item [routerLink]="['auth','register']">Rejestracja</button>
-    </mat-menu>
+    <ng-container *ngIf="!user">
+      <button mat-button [matMenuTriggerFor]="menu" class="content-auth">Konto</button>
+      <mat-menu #menu="matMenu">
+        <button mat-menu-item [routerLink]="['auth','login']">Logowanie</button>
+        <button mat-menu-item [routerLink]="['auth','register']">Rejestracja</button>
+      </mat-menu>
+    </ng-container>
+    <button mat-button (click)="logout()" *ngIf="user" [routerLink]="['']">Wyloguj</button>
 
   </mat-toolbar>
-  <mat-sidenav-container >
+  <app-loader></app-loader>
+  <mat-sidenav-container>
     <mat-sidenav class="side-nav" #sidenav opened >
       <mat-list class="nav">
         <mat-list-item (click)="isMobile && sidenav.toggle()" [routerLink]="['']">

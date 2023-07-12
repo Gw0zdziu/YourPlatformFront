@@ -1,7 +1,8 @@
 export interface User {
-  userId: string;
-  userEmail: string;
-  username: string;
-  password: string;
-  isEmailConfirmed: boolean
+  userId: string,
+  username: string,
+  userEmail: string,
+  accessToken: string,
+  refreshToken: string,
+  isConfirmed: string,
 }

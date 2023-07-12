@@ -1,22 +1,30 @@
-import {AfterViewInit, ChangeDetectorRef, Component, ViewChild} from '@angular/core';
+import {AfterViewInit, ChangeDetectorRef, Component, OnInit, ViewChild} from '@angular/core';
 import {BreakpointObserver, Breakpoints} from '@angular/cdk/layout';
 import {MatSidenav} from '@angular/material/sidenav';
 import {User} from 'src/app/shared/models/user/User';
+import {AuthService} from 'src/app/shared/services/http/auth/auth.service';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css'],
 })
-export class AppComponent implements AfterViewInit{
+export class AppComponent implements AfterViewInit, OnInit{
   @ViewChild('sidenav') sidenav!: MatSidenav;
   marginContent = 32;
   isMobile: boolean;
-  user: User | null;
+  user?: User | null;
   constructor(
     private  breakpointObserver:BreakpointObserver,
     private cdref: ChangeDetectorRef,
-  ) {}
+    private authSvc: AuthService,
+  ) {
+      this.authSvc.user.subscribe(x => this.user = x)
+  }
+
+  ngOnInit() {
+    this.user = this.authSvc.userValue;
+  }
 
   ngAfterViewInit() {
     this.breakpointObserver.observe([Breakpoints.Small, Breakpoints.HandsetPortrait]).subscribe(result => {
@@ -32,5 +40,9 @@ export class AppComponent implements AfterViewInit{
       }
     })
     this.cdref.detectChanges();
+  }
+
+  logout(){
+    this.authSvc.logout()
   }
 }

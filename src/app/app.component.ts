@@ -44,6 +44,19 @@ export class AppComponent implements AfterViewInit, OnInit{
     this.cdref.detectChanges();
   }
 
+  refresh(){
+    this.authSvc.refreshToken().subscribe({
+      next: value => {
+        console.log(value)
+      },
+      error: err => {
+        const {error} = err
+        console.log(error.message)
+        console.log(err.status)
+      }
+    })
+  }
+
   logout(){
     this.authSvc.logout().subscribe({
       next: () => {

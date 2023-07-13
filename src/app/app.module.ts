@@ -14,6 +14,7 @@ import { InformationComponent } from './pages/information/information.component'
 import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import {JwtInterceptor} from 'src/app/shared/helpers/interceptors/jwt/jwt.interceptor';
 import {LoaderInterceptor} from 'src/app/shared/helpers/interceptors/loader/loader.interceptor';
+import {ErrorInterceptor} from 'src/app/shared/helpers/interceptors/error/error.interceptor';
 
 @NgModule({
   declarations: [
@@ -37,6 +38,9 @@ import {LoaderInterceptor} from 'src/app/shared/helpers/interceptors/loader/load
     {
       provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true
     },
+     /* {
+        provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true
+      },*/
     {
       provide: HTTP_INTERCEPTORS, useClass: LoaderInterceptor, multi: true
     }

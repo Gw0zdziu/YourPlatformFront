@@ -8,11 +8,11 @@ import {Router} from '@angular/router';
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
-  styleUrls: ['./register.component.css']
+  styleUrls: ['./register.component.css'],
 })
 export class RegisterComponent implements OnInit{
   registerForm: FormGroup
-
+  emailRegex = "^[a-z0-9._%+-]+@[a-z0-9.-]+.[a-z]{2,4}$";
   constructor(
     private fb: FormBuilder,
     private authSvc: AuthService,
@@ -21,13 +21,13 @@ export class RegisterComponent implements OnInit{
   }
   ngOnInit() {
     this.registerForm = this.fb.group({
-      userEmail: ['', Validators.required],
+      userEmail: ['', [Validators.required, Validators.email]],
       username: ['', Validators.required],
       password: ['', Validators.required]
     })
   }
 
-  get controls(){
+  get f(){
     return this.registerForm.controls;
   }
 

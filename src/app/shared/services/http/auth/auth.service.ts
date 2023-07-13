@@ -25,6 +25,10 @@ export class AuthService {
     return this.userSubject.value;
   }
 
+  public set userValue(value){
+    this.userSubject.next(value)
+  }
+
   signUp(newUser: SingUp): Observable<void>{
     return this.http.post<void>(`${apiUrl}/auth/signup`, newUser)
   }
@@ -38,10 +42,11 @@ export class AuthService {
       }))
   }
 
-  logout(): void{
-    localStorage.removeItem('user');
-    this.userSubject.next(null);
+  logout(): Observable<void>{
+    return this.http.get<void>(`${apiUrl}/auth/logout`)
   }
 
-
+  refreshToken(){
+    return this.http.get<void>(`${apiUrl}/auth/refresh`)
+  }
 }

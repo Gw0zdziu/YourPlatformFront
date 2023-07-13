@@ -3,6 +3,7 @@ import {BreakpointObserver, Breakpoints} from '@angular/cdk/layout';
 import {MatSidenav} from '@angular/material/sidenav';
 import {User} from 'src/app/shared/models/user/User';
 import {AuthService} from 'src/app/shared/services/http/auth/auth.service';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -18,6 +19,7 @@ export class AppComponent implements AfterViewInit, OnInit{
     private  breakpointObserver:BreakpointObserver,
     private cdref: ChangeDetectorRef,
     private authSvc: AuthService,
+    private router: Router
   ) {
       this.authSvc.user.subscribe(x => this.user = x)
   }
@@ -43,6 +45,16 @@ export class AppComponent implements AfterViewInit, OnInit{
   }
 
   logout(){
-    this.authSvc.logout()
+    this.authSvc.logout().subscribe({
+      next: () => {
+        localStorage.removeItem('user');
+        this.authSvc.userValue = null
+        this.router.navigateByUrl('')
+      },
+      error: err => {
+        const {error} = err
+        console.log(error.message)
+      }
+    })
   }
 }

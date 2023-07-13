@@ -19,32 +19,32 @@
   <app-loader></app-loader>
   <mat-sidenav-container>
     <mat-sidenav class="side-nav" #sidenav opened >
-      <mat-list class="nav">
-        <mat-list-item (click)="isMobile && sidenav.toggle()" [routerLink]="['']">
+      <mat-nav-list class="nav">
+        <a mat-list-item (click)="isMobile && sidenav.toggle()" [routerLink]="['']">
           <div class="nav-item" >
             <mat-icon class="item-icon">home</mat-icon>
             <span class="nav-name">Informacje</span>
           </div>
-        </mat-list-item>
-        <mat-list-item *ngIf="user" (click)="isMobile && sidenav.toggle()" [routerLink]="['home']">
+        </a>
+        <a mat-list-item *ngIf="user" (click)="isMobile && sidenav.toggle()" [routerLink]="['home']">
           <div class="nav-item" >
             <mat-icon class="item-icon">dashboard</mat-icon>
             <span class="nav-name">Podsumowanie</span>
           </div>
-        </mat-list-item>
-        <mat-list-item *ngIf="user" (click)="isMobile && sidenav.toggle()" [routerLink]="['category','list']">
+        </a>
+        <a mat-list-item *ngIf="user" (click)="isMobile && sidenav.toggle()" [routerLink]="['category','list']">
           <div class="nav-item" >
             <mat-icon class="item-icon">category</mat-icon>
             <span class="nav-name">Kategorie</span>
           </div>
-        </mat-list-item>
-        <mat-list-item *ngIf="user" (click)="isMobile && sidenav.toggle()" [routerLink]="['game', 'list']">
+        </a>
+        <a mat-list-item *ngIf="user" (click)="isMobile && sidenav.toggle()" [routerLink]="['game', 'list']">
           <div class="nav-item" >
             <mat-icon class="item-icon">sports_esports</mat-icon>
             <span class="nav-name">Gry</span>
           </div>
-        </mat-list-item>
-      </mat-list>
+        </a>
+      </mat-nav-list>
     </mat-sidenav>
     <mat-sidenav-content>
       <div [style.margin-left.px]="marginContent" class="content mat-elevation-z8">

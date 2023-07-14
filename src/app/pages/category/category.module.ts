@@ -6,6 +6,7 @@ import { CategoryCreateComponent } from './category-create/category-create.compo
 import { CategoryDetailsComponent } from './category-details/category-details.component';
 import { CategoryListComponent } from './category-list/category-list.component';
 import {CategoryRoutingModule} from 'src/app/pages/category/category-routing.module';
+import {MaterialModule} from 'src/app/shared/modules/material/material.module';
 
 
 
@@ -17,9 +18,10 @@ import {CategoryRoutingModule} from 'src/app/pages/category/category-routing.mod
     CategoryDetailsComponent,
     CategoryListComponent
   ],
-  imports: [
-    CommonModule,
-    CategoryRoutingModule
-  ]
+    imports: [
+        CommonModule,
+        CategoryRoutingModule,
+        MaterialModule
+    ]
 })
 export class CategoryModule { }

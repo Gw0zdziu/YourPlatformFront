@@ -27,6 +27,11 @@ export class JwtInterceptor implements HttpInterceptor {
         }
       })
     }
+    if (user){
+      request = request.clone({
+        headers: request.headers.set('userId', user.userId),
+      })
+    }
     return next.handle(request);
   }
 }

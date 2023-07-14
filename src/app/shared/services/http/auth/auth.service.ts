@@ -44,6 +44,10 @@ export class AuthService {
 
   logout(): Observable<void>{
     return this.http.get<void>(`${apiUrl}/auth/logout`)
+      .pipe(map(() => {
+        localStorage.removeItem('user');
+        this.userSubject.next(null);
+      }))
   }
 
   refreshToken(): Observable<void>{

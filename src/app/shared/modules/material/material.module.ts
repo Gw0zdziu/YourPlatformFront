@@ -10,6 +10,9 @@ import {MatMenuModule} from '@angular/material/menu';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
 import {MatProgressBarModule} from '@angular/material/progress-bar';
+import {MatTableModule} from '@angular/material/table';
+import {MatPaginatorModule} from '@angular/material/paginator';
+import {MatSortModule} from '@angular/material/sort';
 
 @NgModule({
   declarations: [],
@@ -25,6 +28,9 @@ import {MatProgressBarModule} from '@angular/material/progress-bar';
     MatFormFieldModule,
     MatInputModule,
     MatProgressBarModule,
+    MatTableModule,
+    MatPaginatorModule,
+    MatSortModule,
   ],
   exports:[
     MatToolbarModule,
@@ -36,7 +42,10 @@ import {MatProgressBarModule} from '@angular/material/progress-bar';
     MatMenuModule,
     MatFormFieldModule,
     MatInputModule,
-    MatProgressBarModule
+    MatProgressBarModule,
+    MatTableModule,
+    MatPaginatorModule,
+    MatSortModule,
   ]
 })
 export class MaterialModule { }

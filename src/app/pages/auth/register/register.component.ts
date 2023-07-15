@@ -4,6 +4,7 @@ import {AuthService} from 'src/app/shared/services/http/auth/auth.service';
 import {SingUp} from 'src/app/shared/models/http/auth/SingUp';
 import {first} from 'rxjs';
 import {Router} from '@angular/router';
+import {NotificationService} from "../../../shared/services/snackbar/notification.service";
 
 @Component({
   selector: 'app-register',
@@ -12,11 +13,11 @@ import {Router} from '@angular/router';
 })
 export class RegisterComponent implements OnInit{
   registerForm: FormGroup
-  emailRegex = "^[a-z0-9._%+-]+@[a-z0-9.-]+.[a-z]{2,4}$";
   constructor(
     private fb: FormBuilder,
     private authSvc: AuthService,
-    private router: Router
+    private router: Router,
+    private notificationSvc: NotificationService
   ) {
   }
   ngOnInit() {
@@ -38,8 +39,12 @@ export class RegisterComponent implements OnInit{
       .subscribe({
         next: () => {
           this.router.navigate(['login']);
+          this.notificationSvc.openNotification('Pomyślnie zarejestrowano użytkownika')
         },
-        error: err => console.log(err),
+        error: err => {
+          const {error} = err;
+          this.notificationSvc.openNotification(error.message)
+        }
       })
   }
 }

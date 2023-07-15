@@ -4,6 +4,7 @@ import {MatSidenav} from '@angular/material/sidenav';
 import {User} from 'src/app/shared/models/user/User';
 import {AuthService} from 'src/app/shared/services/http/auth/auth.service';
 import {Router} from '@angular/router';
+import {NotificationService} from "./shared/services/snackbar/notification.service";
 
 @Component({
   selector: 'app-root',
@@ -19,7 +20,8 @@ export class AppComponent implements AfterViewInit, OnInit{
     private  breakpointObserver:BreakpointObserver,
     private cdref: ChangeDetectorRef,
     private authSvc: AuthService,
-    private router: Router
+    private router: Router,
+    private notificationSvc: NotificationService
   ) {
       this.authSvc.user.subscribe(x => this.user = x)
   }
@@ -48,10 +50,12 @@ export class AppComponent implements AfterViewInit, OnInit{
     this.authSvc.logout().subscribe({
       next: () => {
         this.router.navigateByUrl('')
+        this.notificationSvc.openNotification('Pomyślnie wylogowano')
+
       },
       error: err => {
         const {error} = err
-        console.log(error.message)
+        this.notificationSvc.openNotification(error.message)
       }
     })
   }

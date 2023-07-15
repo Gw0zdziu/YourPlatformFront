@@ -7,6 +7,7 @@ import {RouterOutlet} from '@angular/router';
 import {AuthRoutingModule} from 'src/app/pages/auth/auth-routing.module';
 import {ReactiveFormsModule} from '@angular/forms';
 import {MaterialModule} from 'src/app/shared/modules/material/material.module';
+import { VerifyEmailComponent } from './verify-email/verify-email.component';
 
 
 
@@ -14,7 +15,8 @@ import {MaterialModule} from 'src/app/shared/modules/material/material.module';
   declarations: [
     AuthComponent,
     LoginComponent,
-    RegisterComponent
+    RegisterComponent,
+    VerifyEmailComponent
   ],
   imports: [
     CommonModule,

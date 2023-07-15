@@ -4,6 +4,7 @@ import {AuthService} from 'src/app/shared/services/http/auth/auth.service';
 import {SignIn} from 'src/app/shared/models/http/auth/SignIn';
 import {first} from 'rxjs';
 import {ActivatedRoute, Router} from '@angular/router';
+import {NotificationService} from "../../../shared/services/snackbar/notification.service";
 
 @Component({
   selector: 'app-login',
@@ -18,6 +19,7 @@ export class LoginComponent implements OnInit{
     private authSvc: AuthService,
     private router: Router,
     private route: ActivatedRoute,
+    private snackbarService: NotificationService
   ) {}
 
   ngOnInit() {
@@ -35,10 +37,12 @@ export class LoginComponent implements OnInit{
         next: () => {
           const returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/'
           this.router.navigateByUrl(returnUrl);
+          this.snackbarService.openNotification('Zalogowano pomyślnie')
         },
         error: err => {
           const {error} = err
-          console.error(error.message)
+          this.snackbarService.openNotification(error.message)
+          console.log(error.message)
         }
       })
   }

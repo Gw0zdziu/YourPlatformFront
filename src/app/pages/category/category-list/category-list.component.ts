@@ -8,7 +8,7 @@ import {CategoryService} from 'src/app/shared/services/http/category/category.se
   styleUrls: ['./category-list.component.css']
 })
 export class CategoryListComponent implements OnInit{
-  displayedColumns: string[] = ['categoryName', 'categoryDesc', 'status'];
+  displayedColumns: string[] = ['categoryName', 'categoryDesc', 'status', 'gameCount', 'actions'];
   categoriesList: CategoryList[]
 
   constructor(
@@ -20,6 +20,14 @@ export class CategoryListComponent implements OnInit{
     this.categorySvc.getCategoriesByUserId().subscribe({
       next: value => {
         this.categoriesList = value;
+      }
+    })
+  }
+
+  deactivateCategory(categoryId: string){
+    this.categorySvc.deactivateCategory(categoryId).subscribe({
+      next: () => {
+        window.location.reload()
       }
     })
   }

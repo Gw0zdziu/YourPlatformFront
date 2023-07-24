@@ -8,4 +8,6 @@ export interface CategoryList{
   status: string;
 
   userId: string;
+
+  gameCount: number
 }

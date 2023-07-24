@@ -18,4 +18,8 @@ export class CategoryService {
     getCategoriesByUserId(): Observable<CategoryList[]>{
     return this.http.get<CategoryList[]>(`${apiUrl}/category/by/user`)
   }
+
+  deactivateCategory(categoryId: string): Observable<void>{
+    return this.http.put<void>(`${apiUrl}/category/${categoryId}`, null)
+  }
 }

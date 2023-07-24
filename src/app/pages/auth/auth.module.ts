@@ -7,8 +7,6 @@ import {RouterOutlet} from '@angular/router';
 import {AuthRoutingModule} from 'src/app/pages/auth/auth-routing.module';
 import {ReactiveFormsModule} from '@angular/forms';
 import {MaterialModule} from 'src/app/shared/modules/material/material.module';
-import { VerifyEmailComponent } from './verify-email/verify-email.component';
-
 
 
 @NgModule({
@@ -16,7 +14,6 @@ import { VerifyEmailComponent } from './verify-email/verify-email.component';
     AuthComponent,
     LoginComponent,
     RegisterComponent,
-    VerifyEmailComponent
   ],
   imports: [
     CommonModule,

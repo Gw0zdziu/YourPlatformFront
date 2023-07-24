@@ -3,6 +3,7 @@ import {CategoryList} from 'src/app/shared/models/http/category/CategoryList';
 import {CategoryService} from 'src/app/shared/services/http/category/category.service';
 import {Observable, Subject} from "rxjs";
 import {GlobalService} from "../../../shared/services/global/global.service";
+import {LoaderService} from "../../../shared/services/loader/loader.service";
 
 @Component({
   selector: 'app-category-list',
@@ -16,7 +17,8 @@ export class CategoryListComponent implements OnInit{
 
   constructor(
     private categorySvc: CategoryService,
-    private globalSvc: GlobalService
+    private globalSvc: GlobalService,
+    private loaderSvc: LoaderService,
   ) {
   }
 
@@ -31,7 +33,11 @@ export class CategoryListComponent implements OnInit{
   deactivateCategory(categoryId: string){
     this.categorySvc.deactivateCategory(categoryId).subscribe({
       next: () => {
+        this.loaderSvc.show()
         this.globalSvc.refresh();
+      },
+      complete: () => {
+        this.loaderSvc.hide()
       }
     })
   }

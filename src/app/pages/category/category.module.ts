@@ -7,6 +7,7 @@ import { CategoryDetailsComponent } from './category-details/category-details.co
 import { CategoryListComponent } from './category-list/category-list.component';
 import {CategoryRoutingModule} from 'src/app/pages/category/category-routing.module';
 import {MaterialModule} from 'src/app/shared/modules/material/material.module';
+import {ReactiveFormsModule} from '@angular/forms';
 
 
 
@@ -18,10 +19,11 @@ import {MaterialModule} from 'src/app/shared/modules/material/material.module';
     CategoryDetailsComponent,
     CategoryListComponent
   ],
-    imports: [
-        CommonModule,
-        CategoryRoutingModule,
-        MaterialModule
-    ]
+  imports: [
+    CommonModule,
+    CategoryRoutingModule,
+    MaterialModule,
+    ReactiveFormsModule
+  ]
 })
 export class CategoryModule { }

@@ -32,7 +32,6 @@ export class LoginComponent implements OnInit{
   onSubmit(){
     const credentials = this.loginForm.value as SignIn;
     this.authSvc.signIn(credentials)
-      .pipe(first())
       .subscribe({
         next: () => {
           const returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/'
@@ -40,9 +39,7 @@ export class LoginComponent implements OnInit{
           this.snackbarService.openNotification('Zalogowano pomyślnie')
         },
         error: err => {
-          const {error} = err
-          this.snackbarService.openNotification(error.message)
-          console.log(error.message)
+          this.snackbarService.openNotification(err)
         }
       })
   }

@@ -1,5 +1,5 @@
 <div style="display:flex; flex-direction: column; align-items: flex-end; gap: 16px">
-  <button mat-raised-button color="primary" [routerLink]="['/create']">Dodaj</button>
+  <button mat-raised-button color="primary" [routerLink]="['/category/create']">Dodaj</button>
   <table mat-table [dataSource]="categoriesList" class="mat-elevation-z8">
     <ng-container matColumnDef="categoryName">
       <th mat-header-cell *matHeaderCellDef>Nazwa</th>
@@ -27,7 +27,7 @@
         <button mat-icon-button [routerLink]="['/details']">
           <mat-icon style="color: #004a9f">info</mat-icon>
         </button>
-        <button mat-icon-button [routerLink]="['/edit']">
+        <button mat-icon-button [routerLink]="['/category/edit',element.categoryId]">
           <mat-icon style="color: green">edit</mat-icon>
         </button>
         <button mat-icon-button (click)="deactivateCategory(element.categoryId)">

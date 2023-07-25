@@ -1,1 +1,15 @@
-<p>category-edit works!</p>
+<div style="display:flex; flex-direction: column; align-items: center; row-gap: 10px">
+  <span>Edycja kategorii</span>
+  <form [formGroup]="categoryForm" (ngSubmit)="onSubmit()" style="display: flex; flex-direction: column">
+    <mat-form-field appearance="outline">
+      <mat-label>Nazwa kategorii</mat-label>
+      <input matInput formControlName="categoryName">
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>Opis kategorii</mat-label>
+      <textarea formControlName="categoryDesc" matInput cdkAutosizeMinRows="2" cdkAutosizeMaxRows="10"></textarea>
+    </mat-form-field>
+    <button mat-raised-button color="primary" [disabled]="categoryForm.invalid">Dodaj</button>
+  </form>
+</div>
+

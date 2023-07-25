@@ -26,6 +26,11 @@ const ROUTES: Routes = [
   {
     path: 'auth',
     loadChildren: () => import('./pages/auth/auth.module').then(x => x.AuthModule)
+  },
+  {
+    path: '**',
+    redirectTo: '',
+    component: HomeComponent,
   }
 ]
 

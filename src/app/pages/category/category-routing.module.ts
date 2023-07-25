@@ -11,24 +11,22 @@ const ROUTES: Routes = [
   {
     path: '',
     component: CategoryComponent,
-    children: [
-      {
-        path: 'list',
-        component: CategoryListComponent,
-      },
-      {
-        path: 'details',
-        component: CategoryDetailsComponent
-      },
-      {
-        path: 'edit',
-        component: CategoryEditComponent
-      },
-      {
-        path: 'create',
-        component: CategoryCreateComponent
-      }
-    ]
+  },
+  {
+    path: 'list',
+    component: CategoryListComponent,
+  },
+  {
+    path: 'details',
+    component: CategoryDetailsComponent
+  },
+  {
+    path: 'edit/:categoryId',
+    component: CategoryEditComponent
+  },
+  {
+    path: 'create',
+    component: CategoryCreateComponent,
   }
 ]
 

@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import {environment} from 'src/environments/environment.development';
-import {Observable} from 'rxjs';
+import {Observable, tap} from 'rxjs';
 import {CategoryList} from 'src/app/shared/models/http/category/CategoryList';
 import {HttpClient} from '@angular/common/http';
 import {NewCategory} from 'src/app/shared/models/http/category/NewCategory';
@@ -17,7 +17,7 @@ export class CategoryService {
     private http: HttpClient
   ) {}
 
-  getCategoryById(categoryId: string): Observable<CategoryList>{
+  getCategoryById(categoryId: string | null): Observable<CategoryList>{
     return this.http.get<CategoryList>(`${apiUrl}/category/${categoryId}`)
   }
 
@@ -33,7 +33,7 @@ export class CategoryService {
     return this.http.post<void>(`${apiUrl}/category/add`, newCategory)
   }
 
-  updateCategory(categoryId: string, updatedCategory:UpdateCategory): Observable<void>{
+  updateCategory(categoryId: string | null, updatedCategory:UpdateCategory): Observable<void>{
     return this.http.put<void>(`${apiUrl}/category/update/${categoryId}`, updatedCategory)
   }
 }

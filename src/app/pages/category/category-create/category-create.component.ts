@@ -12,7 +12,7 @@ import {NotificationService} from 'src/app/shared/services/snackbar/notification
   templateUrl: './category-create.component.html',
   styleUrls: ['./category-create.component.css']
 })
-export class CategoryCreateComponent implements OnInit{
+export class CategoryCreateComponent {
   categoryForm: FormGroup
 
   constructor(
@@ -21,9 +21,7 @@ export class CategoryCreateComponent implements OnInit{
     private categorySvc :CategoryService,
     private router: Router,
     private notificationSvc: NotificationService
-  ) {}
-
-  ngOnInit() {
+  ) {
     this.categoryForm = this.fb.group({
       categoryName: ['', Validators.required],
       categoryDesc: ['', Validators.required],

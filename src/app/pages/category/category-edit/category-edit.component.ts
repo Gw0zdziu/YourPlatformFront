@@ -14,8 +14,7 @@ import {CategoryList} from 'src/app/shared/models/http/category/CategoryList';
 })
 export class CategoryEditComponent implements OnInit{
   categoryForm: FormGroup;
-  categoryId: string;
-  category: CategoryList;
+  categoryId: string | null;
   constructor(
     private fb: FormBuilder,
     private authSvc: AuthService,
@@ -23,29 +22,25 @@ export class CategoryEditComponent implements OnInit{
     private router: Router,
     private notificationSvc: NotificationService,
     private route: ActivatedRoute
-  ) {}
-
-  ngOnInit() {
-    this.route.params.subscribe({
-      next: value => {
-        this.categoryId = value.get('categoryId')
-      }
-    })
-
-    this.categorySvc.getCategoryById(this.categoryId).subscribe({
-      next: value => {
-        this.category = value
-      },
-      error: err => {
-        this.notificationSvc.openNotification(err);
-      }
-    })
+  ) {
     this.categoryForm = this.fb.group({
       categoryName: ['', Validators.required],
       categoryDesc: ['', Validators.required],
     })
   }
 
+  ngOnInit() {
+    this.categoryId = this.route.snapshot.paramMap.get('categoryId');
+    this.categorySvc.getCategoryById(this.categoryId).subscribe({
+      next: value => {
+        this.categoryForm.get('categoryName')?.patchValue(value.categoryName);
+        this.categoryForm.get('categoryDesc')?.patchValue(value.categoryDesc);
+      },
+      error: err => {
+        this.notificationSvc.openNotification(err);
+      }
+    })
+  }
   onSubmit(){
     const updatedCategory: UpdateCategory = {
       categoryName: this.categoryForm.get('categoryName')?.value,
@@ -53,7 +48,7 @@ export class CategoryEditComponent implements OnInit{
     }
     this.categorySvc.updateCategory(this.categoryId, updatedCategory).subscribe({
       next: () => {
-        this.notificationSvc.openNotification('Pomyślnie utworzono kategorie')
+        this.notificationSvc.openNotification('Pomyślnie zaktualizowano kategorie')
         this.router.navigate(['/category/list'])
       },
       error: err => {

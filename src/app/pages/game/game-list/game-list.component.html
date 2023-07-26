@@ -1,1 +1,42 @@
-<p>game-list works!</p>
+<div style="display:flex; flex-direction: column; align-items: flex-end; gap: 16px">
+  <button mat-raised-button color="primary" [routerLink]="['/game/create']">Dodaj</button>
+  <table mat-table [dataSource]="gamesList" class="mat-elevation-z8">
+    <ng-container matColumnDef="gameName">
+      <th mat-header-cell *matHeaderCellDef>Nazwa gry</th>
+      <td mat-cell *matCellDef="let element">{{element.gameName}}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="gameDesc">
+      <th mat-header-cell *matHeaderCellDef>Opis gry</th>
+      <td mat-cell *matCellDef="let element">{{element.gameDesc}}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="categoryName">
+      <th mat-header-cell *matHeaderCellDef>Nazwa kategorii</th>
+      <td mat-cell *matCellDef="let element">{{element.category.categoryName}}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="gameRating">
+      <th mat-header-cell *matHeaderCellDef>Ocena gry</th>
+      <td mat-cell *matCellDef="let element">{{element.gameRating}} / 10</td>
+    </ng-container>
+
+    <ng-container matColumnDef="actions">
+      <th mat-header-cell *matHeaderCellDef>Akcje</th>
+      <td mat-cell *matCellDef="let element">
+        <button mat-icon-button [routerLink]="['/game/details', element.gameId]">
+          <mat-icon style="color: #004a9f">info</mat-icon>
+        </button>
+        <button mat-icon-button [routerLink]="['/game/edit',element.gameId]">
+          <mat-icon style="color: green">edit</mat-icon>
+        </button>
+        <button mat-icon-button (click)="deleteGame(element.gameId)">
+          <mat-icon style="color: red">delete</mat-icon>
+        </button>
+      </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+  </table>
+</div>

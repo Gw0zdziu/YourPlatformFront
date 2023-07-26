@@ -25,7 +25,6 @@ export class CategoryListComponent implements OnInit{
     this.categorySvc.getCategoriesByUserId().subscribe({
       next: value => {
         this.categoriesList = value;
-        console.log(value)
       }
     })
   }

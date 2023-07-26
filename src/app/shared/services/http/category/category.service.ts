@@ -5,6 +5,7 @@ import {CategoryList} from 'src/app/shared/models/http/category/CategoryList';
 import {HttpClient} from '@angular/common/http';
 import {NewCategory} from 'src/app/shared/models/http/category/NewCategory';
 import {UpdateCategory} from 'src/app/shared/models/http/category/UpdateCategory';
+import {CategoryNames} from 'src/app/shared/models/http/category/CategoryNames';
 
 const apiUrl = environment.apiUrl
 
@@ -23,6 +24,10 @@ export class CategoryService {
 
   getCategoriesByUserId(): Observable<CategoryList[]>{
     return this.http.get<CategoryList[]>(`${apiUrl}/category/by/user`)
+  }
+
+  getCategoriesNames(): Observable<CategoryNames[]>{
+    return this.http.get<CategoryNames[]>(`${apiUrl}/category/categories-names`)
   }
 
   deactivateCategory(categoryId: string): Observable<void>{

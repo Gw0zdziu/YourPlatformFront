@@ -8,28 +8,26 @@ import {GameEditComponent} from 'src/app/pages/game/game-edit/game-edit.componen
 import {GameCreateComponent} from 'src/app/pages/game/game-create/game-create.component';
 
 const ROUTES: Routes = [
-  {
-    path: '',
-    component: GameComponent,
-    children: [
+      {
+      path: '',
+      component: GameComponent,
+      },
       {
         path: 'list',
         component: GameListComponent
       },
       {
-        path: 'details',
+        path: 'details/:gameId',
         component: GameDetailsComponent,
       },
       {
-        path: 'edit',
+        path: 'edit/:gameId',
         component: GameEditComponent,
       },
       {
         path: 'create',
         component: GameCreateComponent,
       }
-    ]
-  }
 ]
 
 @NgModule({

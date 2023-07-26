@@ -7,6 +7,13 @@ import { GameDetailsComponent } from './game-details/game-details.component';
 import { GameListComponent } from './game-list/game-list.component';
 import {RouterOutlet} from '@angular/router';
 import {GameRoutingModule} from 'src/app/pages/game/game-routing.module';
+import {MatButtonModule} from '@angular/material/button';
+import {MatIconModule} from '@angular/material/icon';
+import {MatTableModule} from '@angular/material/table';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatInputModule} from '@angular/material/input';
+import {ReactiveFormsModule} from '@angular/forms';
+import {MaterialModule} from 'src/app/shared/modules/material/material.module';
 
 
 
@@ -21,7 +28,14 @@ import {GameRoutingModule} from 'src/app/pages/game/game-routing.module';
   imports: [
     CommonModule,
     GameRoutingModule,
-    RouterOutlet
+    RouterOutlet,
+    MatButtonModule,
+    MatIconModule,
+    MatTableModule,
+    MatFormFieldModule,
+    MatInputModule,
+    ReactiveFormsModule,
+    MaterialModule
   ]
 })
 export class GameModule { }

@@ -1,1 +1,7 @@
-<p>game-details works!</p>
+<div *ngIf="game">
+  <h1>{{game.gameName}}</h1>
+  <div>{{game.gameDesc}}</div>
+  <div>{{game.gameRating}} / 10</div>
+  <div>{{categoryName}}</div>
+</div>
+

@@ -1,4 +1,4 @@
-<div style="display: flex; flex-direction: column; justify-content: center">
+<!--<div style="display: flex; flex-direction: column; justify-content: center">
   <mat-toolbar class="toolbar " >
     <div class="toolbar-content">
       <button *ngIf="sidenav.mode === 'over'" mat-icon-button (click)="sidenav.toggle()"  aria-label="Example icon button with a menu icon">
@@ -52,5 +52,44 @@
       </div>
     </mat-sidenav-content>
   </mat-sidenav-container>
+</div>-->
+<div class="app-container">
+  <nav class="container-nav" >
+    <div class="nav-hamburger" *ngIf="isMobile">
+      <input [checked]="isMenuOpen" (change)="isMenuOpen = !isMenuOpen" style="display: none" type="checkbox"id="menu">
+      <label  for="menu">
+        <div class="hamburger-icon" [ngClass]="!isMenuOpen ? 'is-active' : ''">
+          <div class="icon-line"></div>
+          <div class="icon-line"></div>
+          <div class="icon-line"></div>
+        </div>
+      </label>
+    </div>
+    <span class="nav-name">Your Platform</span>
+  </nav>
+  <menu class="container-menu" [ngClass]="isMenuOpen ? 'is-menu-open' : ''" *ngIf="isMobile">
+    <ul class="menu-list">
+      <a class="list-item" [routerLink]="['home']" (click)="closeMenu()">
+        <li>
+          Informacje
+        </li>
+      </a>
+      <a class="list-item" [routerLink]="['category','list']" (click)="closeMenu()">
+        <li>
+          Kategorie
+        </li>
+      </a>
+      <a class="list-item" [routerLink]="['game','list']" (click)="closeMenu()">
+        <li>
+          Gry
+        </li>
+      </a>
+    </ul>
+  </menu>
+  <section class="container-content">
+    <router-outlet></router-outlet>
+  </section>
 </div>
+
+
 

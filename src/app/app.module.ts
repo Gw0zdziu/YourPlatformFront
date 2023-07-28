@@ -15,6 +15,7 @@ import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import {JwtInterceptor} from 'src/app/shared/helpers/interceptors/jwt/jwt.interceptor';
 import {LoaderInterceptor} from 'src/app/shared/helpers/interceptors/loader/loader.interceptor';
 import {ErrorInterceptor} from "./shared/helpers/interceptors/error/error.interceptor";
+import {FormsModule} from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,8 @@ import {ErrorInterceptor} from "./shared/helpers/interceptors/error/error.interc
     AuthModule,
     CategoryModule,
     GameModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule
   ],
   providers: [
     {

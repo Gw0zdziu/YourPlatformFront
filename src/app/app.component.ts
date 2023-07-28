@@ -11,8 +11,9 @@ import {NotificationService} from "./shared/services/snackbar/notification.servi
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css'],
 })
-export class AppComponent implements AfterViewInit, OnInit{
-  @ViewChild('sidenav') sidenav!: MatSidenav;
+export class AppComponent implements /*AfterViewInit, */OnInit{
+  isMenuOpen: boolean = false
+ /* @ViewChild('sidenav') sidenav!: MatSidenav;*/
   marginContent = 32;
   isMobile: boolean;
   user?: User | null;
@@ -30,17 +31,22 @@ export class AppComponent implements AfterViewInit, OnInit{
     this.user = this.authSvc.userValue;
   }
 
+  closeMenu(){
+    this.isMenuOpen = !this.isMenuOpen
+  }
+
+
   ngAfterViewInit() {
     this.breakpointObserver.observe([Breakpoints.Small, Breakpoints.HandsetPortrait]).subscribe(result => {
       this.isMobile = result.matches;
       if (result.matches){
-        this.sidenav.mode = 'over';
+        /*this.sidenav.mode = 'over';
         this.sidenav.close().then();
-        this.marginContent = 16;
+        this.marginContent = 16;*/
       }else {
-        this.sidenav.open().then();
+        /*this.sidenav.open().then();
         this.sidenav.mode = 'side'
-        this.marginContent = 32
+        this.marginContent = 32*/
       }
     })
     this.cdref.detectChanges();

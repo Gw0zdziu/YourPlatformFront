@@ -66,6 +66,7 @@ export class GameCreateComponent implements OnInit{
       return this.category.filter(x => x.categoryName.toLowerCase().includes(filterValue));
   }
 
+
   onSubmit(){
     const newGame: NewGame = {
       gameName: this.gameForm.get('gameName')?.value,

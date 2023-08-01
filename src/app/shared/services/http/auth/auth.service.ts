@@ -50,7 +50,7 @@ export class AuthService {
       }))
   }
 
-  refreshToken(): Observable<void>{
-    return this.http.get<void>(`${apiUrl}/auth/refresh`)
+  validateToken(): Observable<void>{
+    return this.http.get<void>(`${apiUrl}/auth/validate`)
   }
 }

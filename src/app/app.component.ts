@@ -32,7 +32,7 @@ export class AppComponent implements /*AfterViewInit, */OnInit{
   }
 
   closeMenu(){
-    this.isMenuOpen = !this.isMenuOpen
+    this.isMenuOpen = !this.isMenuOpen;
   }
 
 
@@ -60,8 +60,7 @@ export class AppComponent implements /*AfterViewInit, */OnInit{
 
       },
       error: err => {
-        const {error} = err
-        this.notificationSvc.openNotification(error.message)
+        this.notificationSvc.openNotification(err.error.message)
       }
     })
   }

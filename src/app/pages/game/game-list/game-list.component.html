@@ -1,6 +1,6 @@
 <div style="display:flex; flex-direction: column; align-items: center; row-gap: 16px; margin-top: 16px">
   <div style="display: flex; justify-content: flex-end; width: 100%;">
-    <button class="button-9" [routerLink]="['/category/create']">Dodaj</button>
+    <button class="button-9" [routerLink]="['/game/create']">Dodaj</button>
   </div>
   <div style="display: flex; flex-direction: column; align-items: center; row-gap: 16px; width: 100%">
     <div *ngFor="let game of gamesList" style="display: grid; grid-template-columns: repeat(2, 1fr); grid-template-rows: repeat(1, 1fr); width: 95%; -webkit-box-shadow: 0px 0px 7px 0px rgba(207, 207, 207, 1);
@@ -9,6 +9,7 @@ box-shadow: 0px 0px 7px 0px rgba(207, 207, 207, 1); ">
       <div style="display: block;">
         <div style="margin: 8px; font-size: 32px;">{{game.gameName}}</div>
         <div style="margin: 8px; font-size: 24px">Kategoria: {{game.category.categoryName}}</div>
+        <div style="margin: 8px; font-size: 24px">Ocena gry: {{game.gameRating}} / 10</div>
       </div>
       <div style="display:flex; justify-content: flex-end; align-items: center;">
         <button mat-icon-button [routerLink]="['/game/details', game.gameId]">

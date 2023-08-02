@@ -11,10 +11,8 @@ import {NotificationService} from "./shared/services/snackbar/notification.servi
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css'],
 })
-export class AppComponent implements /*AfterViewInit, */OnInit{
+export class AppComponent implements AfterViewInit, OnInit{
   isMenuOpen: boolean = false
- /* @ViewChild('sidenav') sidenav!: MatSidenav;*/
-  marginContent = 32;
   isMobile: boolean;
   user?: User | null;
   constructor(
@@ -37,7 +35,7 @@ export class AppComponent implements /*AfterViewInit, */OnInit{
 
 
   ngAfterViewInit() {
-    this.breakpointObserver.observe([Breakpoints.Small, Breakpoints.HandsetPortrait]).subscribe(result => {
+    this.breakpointObserver.observe(Breakpoints.XSmall).subscribe(result => {
       this.isMobile = result.matches;
       if (result.matches){
         /*this.sidenav.mode = 'over';

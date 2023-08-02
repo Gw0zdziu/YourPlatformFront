@@ -10,7 +10,6 @@ import {GlobalService} from 'src/app/shared/services/global/global.service';
   styleUrls: ['./game-list.component.css']
 })
 export class GameListComponent implements OnInit{
-  displayedColumns: string[] = ['gameName', 'gameDesc', 'gameRating', 'categoryName', 'actions']
   gamesList: GameList[]
   constructor(
     private gameSvc: GameService,
@@ -22,7 +21,7 @@ export class GameListComponent implements OnInit{
   ngOnInit() {
     this.gameSvc.getGameByUserId().subscribe({
       next: value => {
-        this.gamesList = value
+        this.gamesList = value;
       }
     })
   }

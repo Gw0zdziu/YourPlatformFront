@@ -1,63 +1,8 @@
-<!--<div style="display: flex; flex-direction: column; justify-content: center">
-  <mat-toolbar class="toolbar " >
-    <div class="toolbar-content">
-      <button *ngIf="sidenav.mode === 'over'" mat-icon-button (click)="sidenav.toggle()"  aria-label="Example icon button with a menu icon">
-        <mat-icon class="icon-menu">menu</mat-icon>
-      </button>
-      <span>YourPlatform</span>
-    </div>
-    <ng-container *ngIf="!user">
-      <button mat-button [matMenuTriggerFor]="menu" class="content-auth">Konto</button>
-      <mat-menu #menu="matMenu">
-        <button mat-menu-item [routerLink]="['auth','login']">Logowanie</button>
-        <button mat-menu-item [routerLink]="['auth','register']">Rejestracja</button>
-      </mat-menu>
-    </ng-container>
-    <button mat-button (click)="logout()" *ngIf="user" [routerLink]="['']">Wyloguj</button>
-
-  </mat-toolbar>
-  <app-loader></app-loader>
-  <mat-sidenav-container>
-    <mat-sidenav class="side-nav" #sidenav opened >
-      <mat-nav-list class="nav">
-        <a mat-list-item (click)="isMobile && sidenav.toggle()" [routerLink]="['']">
-          <div class="nav-item" >
-            <mat-icon class="item-icon">home</mat-icon>
-            <span class="nav-name">Informacje</span>
-          </div>
-        </a>
-        <a mat-list-item *ngIf="user" (click)="isMobile && sidenav.toggle()" [routerLink]="['home']">
-          <div class="nav-item" >
-            <mat-icon class="item-icon">dashboard</mat-icon>
-            <span class="nav-name">Podsumowanie</span>
-          </div>
-        </a>
-        <a mat-list-item *ngIf="user" (click)="isMobile && sidenav.toggle()" [routerLink]="['category','list']">
-          <div class="nav-item" >
-            <mat-icon class="item-icon">category</mat-icon>
-            <span class="nav-name">Kategorie</span>
-          </div>
-        </a>
-        <a mat-list-item *ngIf="user" (click)="isMobile && sidenav.toggle()" [routerLink]="['game', 'list']">
-          <div class="nav-item" >
-            <mat-icon class="item-icon">sports_esports</mat-icon>
-            <span class="nav-name">Gry</span>
-          </div>
-        </a>
-      </mat-nav-list>
-    </mat-sidenav>
-    <mat-sidenav-content>
-      <div [style.margin-left.px]="marginContent" class="content">
-        <router-outlet ></router-outlet>
-      </div>
-    </mat-sidenav-content>
-  </mat-sidenav-container>
-</div>-->
 <div class="app-container">
   <nav class="container-nav" >
     <div class="nav-routing">
       <div class="nav-hamburger" *ngIf="isMobile">
-        <input [checked]="isMenuOpen" (change)="isMenuOpen = !isMenuOpen" style="display: none" type="checkbox"id="menu">
+        <input [checked]="isMenuOpen" (click)="isMenuOpen = !isMenuOpen" style="display: none" type="checkbox"id="menu">
         <label  for="menu">
           <div class="hamburger-icon" [ngClass]="!isMenuOpen ? 'is-active' : ''">
             <div class="icon-line"></div>
@@ -90,29 +35,28 @@
       <button class="nav-auth" (click)="logout()" *ngIf="user" [routerLink]="['']">Wyloguj</button>
     </ng-container>
   </nav>
-  <menu class="container-menu" [ngClass]="isMenuOpen ? 'is-menu-open' : ''" *ngIf="isMobile">
-    <ul class="menu-list">
-      <a class="list-item"  *ngIf="user" [routerLink]="['home']" [routerLinkActive]="['active']" (click)="closeMenu()">
-        <li class="item-name">
-          Informacje
-        </li>
-      </a>
-      <a class="list-item" *ngIf="user" [routerLink]="['category','list']" [routerLinkActive]="['active']" (click)="closeMenu()">
-        <li>
-          Kategorie
-        </li>
-      </a>
-      <a class="list-item" *ngIf="user" [routerLink]="['game','list']" [routerLinkActive]="['active']" (click)="closeMenu()">
-        <li>
-          Gry
-        </li>
-      </a>
-    </ul>
-  </menu>
-  <section class="container-content">
+  <section class="container-content" [style.width.%]="isMobile ? '100' : '70'">
     <router-outlet></router-outlet>
   </section>
 </div>
-
+<menu class="container-menu" [ngClass]="isMenuOpen ? 'is-menu-open' : ''" *ngIf="isMobile">
+  <ul class="menu-list">
+    <a class="list-item"  *ngIf="user" [routerLink]="['home']" [routerLinkActive]="['active']" (click)="closeMenu()">
+      <li class="item-name">
+        Informacje
+      </li>
+    </a>
+    <a class="list-item" *ngIf="user" [routerLink]="['category','list']" [routerLinkActive]="['active']" (click)="closeMenu()">
+      <li>
+        Kategorie
+      </li>
+    </a>
+    <a class="list-item" *ngIf="user" [routerLink]="['game','list']" [routerLinkActive]="['active']" (click)="closeMenu()">
+      <li>
+        Gry
+      </li>
+    </a>
+  </ul>
+</menu>
 
 

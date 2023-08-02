@@ -1,0 +1,14 @@
+.button-9 {
+  background-color: blueviolet;
+  border-radius: 6px;
+  border-width: 0;
+  cursor: pointer;
+  margin-right: 12px;
+  color: white;
+  outline: none;
+  overflow: hidden;
+  padding: 8px 12px;
+  position: relative;
+  text-align: center;
+}
+

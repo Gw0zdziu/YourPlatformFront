@@ -5,5 +5,7 @@ export interface GameList{
   gameRating: number;
   userId: string;
   categoryId: string;
-  categoryName: string
+  category: {
+    categoryName: string;
+  }
 }

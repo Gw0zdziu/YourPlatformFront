@@ -10,7 +10,7 @@ import {LoaderService} from "../../../shared/services/loader/loader.service";
   styleUrls: ['./category-list.component.css']
 })
 export class CategoryListComponent implements OnInit{
-  displayedColumns: string[] = ['categoryName', 'categoryDesc', 'status', 'gameCount', 'actions'];
+  displayedColumns: string[] = ['categoryName', 'gameCount', 'actions'];
   categoriesList: CategoryList[]
 
 

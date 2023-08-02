@@ -15,6 +15,7 @@ import {MatPaginatorModule} from '@angular/material/paginator';
 import {MatSortModule} from '@angular/material/sort';
 import {MatSnackBarModule} from "@angular/material/snack-bar";
 import {MatAutocompleteModule} from '@angular/material/autocomplete';
+import {MatTooltipModule} from "@angular/material/tooltip";
 
 @NgModule({
   declarations: [],
@@ -35,6 +36,7 @@ import {MatAutocompleteModule} from '@angular/material/autocomplete';
     MatSortModule,
     MatSnackBarModule,
     MatAutocompleteModule,
+    MatTooltipModule
   ],
   exports:[
     MatToolbarModule,
@@ -51,7 +53,8 @@ import {MatAutocompleteModule} from '@angular/material/autocomplete';
     MatPaginatorModule,
     MatSortModule,
     MatSnackBarModule,
-    MatAutocompleteModule
+    MatAutocompleteModule,
+    MatTooltipModule
   ]
 })
 export class MaterialModule { }

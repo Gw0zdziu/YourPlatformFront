@@ -12,7 +12,8 @@ import {NotificationService} from "../../../shared/services/snackbar/notificatio
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit{
-  loginForm: FormGroup
+  loginForm: FormGroup;
+  hide: boolean = false;
 
   constructor(
     private fb: FormBuilder,

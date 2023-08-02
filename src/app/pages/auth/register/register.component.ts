@@ -12,7 +12,8 @@ import {NotificationService} from "../../../shared/services/snackbar/notificatio
   styleUrls: ['./register.component.css'],
 })
 export class RegisterComponent implements OnInit{
-  registerForm: FormGroup
+  registerForm: FormGroup;
+  hide: boolean = false;
   constructor(
     private fb: FormBuilder,
     private authSvc: AuthService,

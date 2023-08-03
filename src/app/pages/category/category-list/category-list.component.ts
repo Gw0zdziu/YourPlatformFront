@@ -11,7 +11,7 @@ import {LoaderService} from "../../../shared/services/loader/loader.service";
 })
 export class CategoryListComponent implements OnInit{
   displayedColumns: string[] = ['categoryName', 'gameCount', 'actions'];
-  categoriesList: CategoryList[]
+  categoriesList: CategoryList[] = []
 
 
   constructor(

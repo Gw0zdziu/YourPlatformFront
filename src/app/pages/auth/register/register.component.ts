@@ -13,7 +13,7 @@ import {NotificationService} from "../../../shared/services/snackbar/notificatio
 })
 export class RegisterComponent implements OnInit{
   registerForm: FormGroup;
-  hide: boolean = false;
+  hide: boolean = true;
   constructor(
     private fb: FormBuilder,
     private authSvc: AuthService,

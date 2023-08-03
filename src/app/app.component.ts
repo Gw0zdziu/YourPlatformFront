@@ -12,7 +12,7 @@ import {NotificationService} from "./shared/services/snackbar/notification.servi
   styleUrls: ['./app.component.css'],
 })
 export class AppComponent implements AfterViewInit, OnInit{
-  isMenuOpen: boolean = false
+  isMenuClosed: boolean = true;
   isMobile: boolean;
   user?: User | null;
   constructor(
@@ -30,7 +30,7 @@ export class AppComponent implements AfterViewInit, OnInit{
   }
 
   closeMenu(){
-    this.isMenuOpen = !this.isMenuOpen;
+    this.isMenuClosed = !this.isMenuClosed;
   }
 
 
@@ -38,13 +38,7 @@ export class AppComponent implements AfterViewInit, OnInit{
     this.breakpointObserver.observe(Breakpoints.XSmall).subscribe(result => {
       this.isMobile = result.matches;
       if (result.matches){
-        /*this.sidenav.mode = 'over';
-        this.sidenav.close().then();
-        this.marginContent = 16;*/
-      }else {
-        /*this.sidenav.open().then();
-        this.sidenav.mode = 'side'
-        this.marginContent = 32*/
+        this.isMenuClosed = true;
       }
     })
     this.cdref.detectChanges();

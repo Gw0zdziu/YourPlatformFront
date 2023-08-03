@@ -13,7 +13,7 @@ import {NotificationService} from "../../../shared/services/snackbar/notificatio
 })
 export class LoginComponent implements OnInit{
   loginForm: FormGroup;
-  hide: boolean = false;
+  hide: boolean = true;
 
   constructor(
     private fb: FormBuilder,

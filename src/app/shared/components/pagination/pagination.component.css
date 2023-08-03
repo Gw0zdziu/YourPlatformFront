@@ -1,0 +1,16 @@
+.container-pagination{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  -webkit-box-shadow: 0px 0px 7px 0px rgba(207, 207, 207, 1);
+  -moz-box-shadow: 0px 0px 7px 0px rgba(207, 207, 207, 1);
+  box-shadow: 0px 0px 7px 0px rgba(207, 207, 207, 1);
+}
+
+.pagination-list{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  list-style-type: none;
+}

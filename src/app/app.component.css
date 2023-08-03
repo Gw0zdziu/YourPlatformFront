@@ -52,16 +52,19 @@ mat-sidenav-container {
 
 .container-menu{
   width: 192px;
-  height: 100vh;
+  height: 100%;
   margin: 0;
   padding: 0;
-  -webkit-box-shadow: 10px 0px 21px -13px rgba(160, 160, 172, 1);
-  -moz-box-shadow: 10px 0px 21px -13px rgba(160, 160, 172, 1);
-  box-shadow: 10px 0px 21px -13px rgba(160, 160, 172, 1);
+  -webkit-box-shadow: 10px 0 21px -13px rgba(160, 160, 172, 1);
+  -moz-box-shadow: 10px 0 21px -13px rgba(160, 160, 172, 1);
+  box-shadow: 10px 0 21px -13px rgba(160, 160, 172, 1);
   background-color: #ffffff;
   z-index: 2;
-  position: absolute;
+  position: fixed;
+  overflow-x: hidden;
+  overflow-y: auto;
   top: 64px;
+  left: 0;
   transition: all 0.5s ease-in-out;
   -webkit-transition: all 0.5s ease-in-out;
   -o-transition: all 0.5s ease-in-out;
@@ -82,6 +85,14 @@ mat-sidenav-container {
 .container-content{
   width: 70%;
   height: 100%;
+  transition: all 0.3s ease-in-out;
+}
+
+.inactive{
+  opacity: 0.5;
+  pointer-events: none;
+  transition: all 0.3s ease-in-out;
+  overflow: hidden;
 }
 
 .nav-routing{
@@ -134,7 +145,7 @@ mat-sidenav-container {
 }
 
 .container-menu.is-menu-open{
-  transform: translateX(-105%);
+  transform: translateX(-100%);
 }
 
 

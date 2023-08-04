@@ -2,14 +2,14 @@
   <ul class="pagination-list">
     <!-- first button -->
     <li
-      [class]="currentPage === 1 ? 'page-item disabled' : 'page-item'"
+      [ngClass]="currentPage === 1 ? 'button-disabled' : ''"
       *ngIf="firstLastButtons"
     >
       <button class="page-link" (click)="selectPageNumber(1)">««</button>
     </li>
     <!-- previous button -->
     <li
-      *ngIf="nextPreviousButtons"
+      *ngIf="nextPreviousButtons" [ngClass]="currentPage === 1 ? 'button-disabled' : '' "
     >
       <button class="page-link" (click)="previousPage()">«</button>
     </li>
@@ -18,22 +18,23 @@
       <li
         *ngIf="i + 1 >= currentPage - maxSize && i + 1 <= currentPage + maxSize"
       >
-        <button class="page-link" (click)="selectPageNumber(i + 1)">
+        <button class="page-link"  (click)="selectPageNumber(i + 1)"
+                [ngClass]="currentPage === i + 1 ? 'page-active' : ''">
           {{ i + 1 }}
         </button>
       </li>
     </ng-container>
     <!-- next button -->
-    <li
+    <li class="" [ngClass]="currentPage === totalPages.length ? 'button-disabled' : ''"
       *ngIf="nextPreviousButtons"
     >
       <button class="page-link" (click)="nextPage()">»</button>
     </li>
     <!-- last button -->
-    <li
+    <li [ngClass]="currentPage === totalPages.length ? 'button-disabled' : ''"
       *ngIf="firstLastButtons"
     >
-      <button class="page-link" (click)="selectPageNumber(totalPages.length)">
+      <button class="page-link arrow" (click)="selectPageNumber(totalPages.length)">
         »»
       </button>
     </li>

@@ -39,15 +39,27 @@ export class PaginationComponent implements OnInit, OnChanges{
 
   selectPageNumber(pageNumber: number): void{
     this.currentPage = pageNumber;
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    });
   }
 
   nextPage(){
     const nextPage = this.currentPage + 1;
     nextPage <= this.totalPages.length && this.selectPageNumber(nextPage);
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    });
   }
 
   previousPage(){
     const previousPage = this.currentPage - 1;
     previousPage >= 1 && this.selectPageNumber(previousPage);
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    });
   }
 }

@@ -1,10 +1,10 @@
-<div style="display: flex">
+<div style="display: flex" *ngIf="collectionSize">
   <div class="container-pagination">
     <select style="margin: 4px; border: none; height: 16px" name="page-size" id="page-size" [(ngModel)]="pageSize">
       <option *ngFor="let size of pageSizes" value="{{size}}">{{size}}</option>
     </select>
   </div>
-  <div class="container-pagination" *ngIf="collectionSize">
+  <div class="container-pagination" >
     <ul class="pagination-list">
       <!-- first button -->
       <li

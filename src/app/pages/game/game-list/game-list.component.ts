@@ -10,7 +10,7 @@ import {GlobalService} from 'src/app/shared/services/global/global.service';
   styleUrls: ['./game-list.component.css']
 })
 export class GameListComponent implements OnInit{
-  gamesList: GameList[]
+  gamesList: GameList[] = []
   constructor(
     private gameSvc: GameService,
     private loaderSvc: LoaderService,

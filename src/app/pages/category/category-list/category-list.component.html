@@ -3,6 +3,9 @@
       <button class="button-9" [routerLink]="['/category/create']">Dodaj</button>
     </div>
     <div style="display: flex; flex-direction: column; align-items: center; row-gap: 16px; width: 100%">
+      <div *ngIf="!categoriesList.length">
+        <span style="font-size: 32px">Brak kategorii</span>
+      </div>
       <div *ngFor="let category of categoriesList | slice
                 : (pagination.currentPage - 1) * pagination.pageSize
                 : pagination.currentPage * pagination.pageSize" style="display: grid; grid-template-columns: 1fr; grid-template-rows: 1fr 2fr; width: 95%; -webkit-box-shadow: 0px 0px 7px 0px rgba(207, 207, 207, 1);
@@ -23,7 +26,7 @@ box-shadow: 0px 0px 7px 0px rgba(207, 207, 207, 1);">
         </div>
       </div>
     </div>
-    <div style="display: flex; justify-content: center; width: 100%">
-      <app-pagination [collectionSize]="categoriesList.length" [pageSize]="10" [firstLastButtons] = "true" [maxSize]="2" #pagination ></app-pagination>
+    <div style="display: flex; justify-content: center; width: 100%" >
+        <app-pagination [collectionSize]="categoriesList.length" [pageSize]="10" [firstLastButtons] = "true" [maxSize]="2" #pagination ></app-pagination>
     </div>
   </div>

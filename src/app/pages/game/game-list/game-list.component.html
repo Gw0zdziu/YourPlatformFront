@@ -3,7 +3,12 @@
     <button class="button-9" [routerLink]="['/game/create']">Dodaj</button>
   </div>
   <div style="display: flex; flex-direction: column; align-items: center; row-gap: 16px; width: 100%">
-    <div *ngFor="let game of gamesList" style="display: grid; grid-template-columns: 1fr; grid-template-rows: 1fr 2fr; width: 95%; -webkit-box-shadow: 0px 0px 7px 0px rgba(207, 207, 207, 1);
+    <div *ngIf="!gamesList.length">
+      <span style="font-size: 32px">Brak gier</span>
+    </div>
+    <div *ngFor="let game of gamesList | slice
+                : (pagination.currentPage - 1) * pagination.pageSize
+                : pagination.currentPage * pagination.pageSize" style="display: grid; grid-template-columns: 1fr; grid-template-rows: 1fr 2fr; width: 95%; -webkit-box-shadow: 0px 0px 7px 0px rgba(207, 207, 207, 1);
 -moz-box-shadow: 0px 0px 7px 0px rgba(207, 207, 207, 1);
 box-shadow: 0px 0px 7px 0px rgba(207, 207, 207, 1);">
       <div style="margin: 8px; font-size: 32px;">{{game.gameName}}</div>
@@ -23,5 +28,8 @@ box-shadow: 0px 0px 7px 0px rgba(207, 207, 207, 1);">
         </button>
       </div>
     </div>
+  </div>
+  <div style="display: flex; justify-content: center; width: 100%" >
+    <app-pagination [collectionSize]="gamesList.length" [pageSize]="10" [firstLastButtons] = "true" [maxSize]="2" #pagination ></app-pagination>
   </div>
 </div>

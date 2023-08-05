@@ -14,6 +14,7 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
 import {ReactiveFormsModule} from '@angular/forms';
 import {MaterialModule} from 'src/app/shared/modules/material/material.module';
+import {SharedModule} from "../../shared/shared.module";
 
 
 
@@ -25,17 +26,18 @@ import {MaterialModule} from 'src/app/shared/modules/material/material.module';
     GameDetailsComponent,
     GameListComponent
   ],
-  imports: [
-    CommonModule,
-    GameRoutingModule,
-    RouterOutlet,
-    MatButtonModule,
-    MatIconModule,
-    MatTableModule,
-    MatFormFieldModule,
-    MatInputModule,
-    ReactiveFormsModule,
-    MaterialModule
-  ]
+    imports: [
+        CommonModule,
+        GameRoutingModule,
+        RouterOutlet,
+        MatButtonModule,
+        MatIconModule,
+        MatTableModule,
+        MatFormFieldModule,
+        MatInputModule,
+        ReactiveFormsModule,
+        MaterialModule,
+        SharedModule
+    ]
 })
 export class GameModule { }

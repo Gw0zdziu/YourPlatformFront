@@ -7,10 +7,13 @@ import {Component, Input, OnChanges, OnInit, SimpleChanges} from '@angular/core'
 })
 export class PaginationComponent implements OnInit, OnChanges{
   @Input()
+  pageSize: number = 5;
+
+  @Input()
   collectionSize: number = 0;
 
   @Input()
-  pageSize: number = 10
+  pageSizes: number[] = [5, 10, 15, 20, 25]
 
   @Input()
   currentPage: number = 1;

@@ -1,42 +1,49 @@
-<div class="container-pagination" *ngIf="collectionSize">
-  <ul class="pagination-list">
-    <!-- first button -->
-    <li
-      [ngClass]="currentPage === 1 ? 'button-disabled' : ''"
-      *ngIf="firstLastButtons"
-    >
-      <button class="page-link" (click)="selectPageNumber(1)">««</button>
-    </li>
-    <!-- previous button -->
-    <li
-      *ngIf="nextPreviousButtons" [ngClass]="currentPage === 1 ? 'button-disabled' : '' "
-    >
-      <button class="page-link" (click)="previousPage()">«</button>
-    </li>
-    <!-- page numbers -->
-    <ng-container *ngFor="let p of totalPages; index as i">
+<div style="display: flex">
+  <div class="container-pagination">
+    <select style="margin: 4px; border: none; height: 16px" name="page-size" id="page-size" [(ngModel)]="pageSize">
+      <option *ngFor="let size of pageSizes" value="{{size}}">{{size}}</option>
+    </select>
+  </div>
+  <div class="container-pagination" *ngIf="collectionSize">
+    <ul class="pagination-list">
+      <!-- first button -->
       <li
-        *ngIf="i + 1 >= currentPage - maxSize && i + 1 <= currentPage + maxSize"
+        [ngClass]="currentPage === 1 ? 'button-disabled' : ''"
+        *ngIf="firstLastButtons"
       >
-        <button class="page-link"  (click)="selectPageNumber(i + 1)"
-                [ngClass]="currentPage === i + 1 ? 'page-active' : ''">
-          {{ i + 1 }}
+        <button class="page-link arrow" (click)="selectPageNumber(1)">««</button>
+      </li>
+      <!-- previous button -->
+      <li
+        *ngIf="nextPreviousButtons" [ngClass]="currentPage === 1 ? 'button-disabled' : '' "
+      >
+        <button class="page-link arrow" (click)="previousPage()">«</button>
+      </li>
+      <!-- page numbers -->
+      <ng-container *ngFor="let p of totalPages; index as i">
+        <li
+          *ngIf="i + 1 >= currentPage - maxSize && i + 1 <= currentPage + maxSize"
+        >
+          <button class="page-link"  (click)="selectPageNumber(i + 1)"
+                  [ngClass]="currentPage === i + 1 ? 'page-active' : ''"   >
+            {{ i + 1 }}
+          </button>
+        </li>
+      </ng-container>
+      <!-- next button -->
+      <li class="" [ngClass]="currentPage === totalPages.length ? 'button-disabled' : ''"
+        *ngIf="nextPreviousButtons"
+      >
+        <button class="page-link arrow" (click)="nextPage()">»</button>
+      </li>
+      <!-- last button -->
+      <li [ngClass]="currentPage === totalPages.length ? 'button-disabled' : ''"
+        *ngIf="firstLastButtons"
+      >
+        <button class="page-link arrow" (click)="selectPageNumber(totalPages.length)">
+          »»
         </button>
       </li>
-    </ng-container>
-    <!-- next button -->
-    <li class="" [ngClass]="currentPage === totalPages.length ? 'button-disabled' : ''"
-      *ngIf="nextPreviousButtons"
-    >
-      <button class="page-link" (click)="nextPage()">»</button>
-    </li>
-    <!-- last button -->
-    <li [ngClass]="currentPage === totalPages.length ? 'button-disabled' : ''"
-      *ngIf="firstLastButtons"
-    >
-      <button class="page-link arrow" (click)="selectPageNumber(totalPages.length)">
-        »»
-      </button>
-    </li>
-  </ul>
+    </ul>
+  </div>
 </div>

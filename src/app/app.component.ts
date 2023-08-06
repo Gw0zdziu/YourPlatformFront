@@ -15,6 +15,7 @@ export class AppComponent implements AfterViewInit, OnInit{
   isMenuClosed: boolean = true;
   isMobile: boolean;
   user?: User | null;
+  isLogged: boolean;
   constructor(
     private  breakpointObserver:BreakpointObserver,
     private cdref: ChangeDetectorRef,
@@ -23,15 +24,17 @@ export class AppComponent implements AfterViewInit, OnInit{
     private notificationSvc: NotificationService
   ) {
       this.authSvc.user.subscribe(x => this.user = x)
+      this.isLogged = this.user ? true : false;
   }
 
   ngOnInit() {
     this.user = this.authSvc.userValue;
   }
 
-  closeMenu(){
-    this.isMenuClosed = !this.isMenuClosed;
+  closeMenu(isMenuClosed: any){
+    this.isMenuClosed = isMenuClosed
   }
+
 
 
   ngAfterViewInit() {
@@ -44,16 +47,4 @@ export class AppComponent implements AfterViewInit, OnInit{
     this.cdref.detectChanges();
   }
 
-  logout(){
-    this.authSvc.logout().subscribe({
-      next: () => {
-        this.router.navigateByUrl('')
-        this.notificationSvc.openNotification('Pomyślnie wylogowano')
-
-      },
-      error: err => {
-        this.notificationSvc.openNotification(err.error.message)
-      }
-    })
-  }
 }

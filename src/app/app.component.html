@@ -1,59 +1,10 @@
 <div class="app-container" >
-  <nav class="container-nav" >
-    <div class="nav-routing">
-      <div class="nav-hamburger" *ngIf="isMobile">
-        <input [checked]="isMenuClosed" (click)="isMenuClosed = !isMenuClosed" style="display: none" type="checkbox" id="menu">
-        <label  for="menu">
-          <div class="hamburger-icon" [ngClass]="!isMenuClosed ? 'is-active' : ''">
-            <div class="icon-line"></div>
-            <div class="icon-line"></div>
-            <div class="icon-line"></div>
-          </div>
-        </label>
-      </div>
-      <span class="nav-name">Your Platform</span>
-      <ul class="nav-list" *ngIf="!isMobile && user">
-        <!--<a class="list-route" [routerLink]="['home']" [routerLinkActive]="['active2']"  (click)="closeMenu()">
-          <li class="menu-name">
-            Informacje
-          </li>
-        </a>-->
-        <a class="list-route" [routerLink]="['category','list']" [routerLinkActive]="['active2']"  (click)="closeMenu()">
-          <li>
-            Kategorie
-          </li>
-        </a>
-        <a class="list-route" [routerLink]="['game','list']" [routerLinkActive]="['active2']"  (click)="closeMenu()">
-          <li>
-            Gry
-          </li>
-        </a>
-      </ul>
-    </div>
-    <ng-container>
-      <button class="nav-auth" (click)="closeMenu()" *ngIf="!user" [routerLink]="['auth','login']">Zaloguj</button>
-      <button class="nav-auth" (click)="logout(); closeMenu()" *ngIf="user" [routerLink]="['']">Wyloguj</button>
-    </ng-container>
-  </nav>
-  <menu class="container-menu" [ngClass]="isMenuClosed ? 'is-menu-open' : ''" *ngIf="isMobile">
-    <ul class="menu-list">
-      <!--<a class="list-item"  *ngIf="user" [routerLink]="['home']" [routerLinkActive]="['active']"  (click)="closeMenu()">
-        <li class="item-name">
-          Informacje
-        </li>
-      </a>-->
-      <a class="list-item"  [routerLink]="['category','list']" [routerLinkActive]="['active']"  (click)="closeMenu()">
-        <li>
-          Kategorie
-        </li>
-      </a>
-      <a class="list-item"  [routerLink]="['game','list']" [routerLinkActive]="['active']"  (click)="closeMenu()">
-        <li>
-          Gry
-        </li>
-      </a>
-    </ul>
-  </menu>
+  <div style="width: 100%">
+    <app-nav [isLogged]="isLogged" [isMenuClosed]="isMenuClosed" [isMobile]="isMobile" (isMenuClosedEmitter)="closeMenu($event)" ></app-nav>
+  </div>
+  <div style="width: 100%">
+    <app-menu [isMobile] = "isMobile" [isMenuClosed]="isMenuClosed" (isMenuClosedEmitter) = "closeMenu($event)"></app-menu>
+  </div>
   <section class="container-content" [ngClass]="!isMenuClosed && isMobile ? 'inactive' : ''"  [style.width.%]="isMobile ? '100' : '70'">
     <router-outlet></router-outlet>
   </section>

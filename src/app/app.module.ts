@@ -16,12 +16,16 @@ import {JwtInterceptor} from 'src/app/shared/helpers/interceptors/jwt/jwt.interc
 import {LoaderInterceptor} from 'src/app/shared/helpers/interceptors/loader/loader.interceptor';
 import {ErrorInterceptor} from "./shared/helpers/interceptors/error/error.interceptor";
 import {FormsModule} from '@angular/forms';
+import { NavComponent } from './components/nav/nav.component';
+import { MenuComponent } from './components/menu/menu.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     InformationComponent,
+    NavComponent,
+    MenuComponent,
   ],
   imports: [
     BrowserModule,

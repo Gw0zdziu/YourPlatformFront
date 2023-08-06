@@ -1,0 +1,19 @@
+<menu class="container-menu" [ngClass]="isMenuClosed ? 'is-menu-open' : ''" *ngIf="isMobile">
+  <ul class="menu-list">
+    <!--<a class="list-item"  *ngIf="user" [routerLink]="['home']" [routerLinkActive]="['active']"  (click)="closeMenu()">
+      <li class="item-name">
+        Informacje
+      </li>
+    </a>-->
+    <a class="list-item"  [routerLink]="['category','list']" [routerLinkActive]="['active']"  (click)="closeMenu()">
+      <li>
+        Kategorie
+      </li>
+    </a>
+    <a class="list-item"  [routerLink]="['game','list']" [routerLinkActive]="['active']"  (click)="closeMenu()">
+      <li>
+        Gry
+      </li>
+    </a>
+  </ul>
+</menu>

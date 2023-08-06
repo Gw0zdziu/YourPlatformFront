@@ -1,0 +1,36 @@
+ <nav class="container-nav" >
+    <div class="nav-routing">
+      <div class="nav-hamburger" *ngIf="isMobile">
+        <input [checked]="isMenuClosed" (click)="closeMenu()" style="display: none" type="checkbox" id="menu">
+        <label  for="menu">
+          <div class="hamburger-icon" [ngClass]="!isMenuClosed ? 'is-active' : ''">
+            <div class="icon-line"></div>
+            <div class="icon-line"></div>
+            <div class="icon-line"></div>
+          </div>
+        </label>
+      </div>
+      <span class="nav-name">Your Platform</span>
+      <ul class="nav-list" *ngIf="!isMobile && user">
+        <!--<a class="list-route" [routerLink]="['home']" [routerLinkActive]="['active2']"  (click)="closeMenu()">
+          <li class="menu-name">
+            Informacje
+          </li>
+        </a>-->
+        <a class="list-route" [routerLink]="['category','list']" [routerLinkActive]="['active2']"  (click)="closeMenu()">
+          <li>
+            Kategorie
+          </li>
+        </a>
+        <a class="list-route" [routerLink]="['game','list']" [routerLinkActive]="['active2']"  (click)="closeMenu()">
+          <li>
+            Gry
+          </li>
+        </a>
+      </ul>
+    </div>
+    <ng-container>
+      <button class="nav-auth" (click)="isMobile && closeMenu()" *ngIf="!user" [routerLink]="['auth','login']">Zaloguj</button>
+      <button class="nav-auth" (click)="logout(); closeMenu()" *ngIf="user" [routerLink]="['']">Wyloguj</button>
+    </ng-container>
+  </nav>

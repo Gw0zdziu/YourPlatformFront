@@ -14,13 +14,13 @@ box-shadow: 0px 0px 7px 0px rgba(207, 207, 207, 1);">
           <div style="margin: 8px; font-size: 32px;">{{category.categoryName}}</div>
           <div style="margin: 8px; font-size: 24px">Liczba gier: {{category.gameCount}}</div>
         <div style="display:flex; justify-content: flex-end; align-items: center; column-gap: 24px; margin: 0 8px 8px 0">
-          <button mat-icon-button [routerLink]="['/category/details', category.categoryId]">
+          <button mat-icon-button matTooltip="Szczegóły" [routerLink]="['/category/details', category.categoryId]">
             <mat-icon style="scale: 2; color: #004a9f">info</mat-icon>
           </button>
-          <button mat-icon-button [routerLink]="['/category/edit',category.categoryId]">
+          <button mat-icon-button matTooltip="Edytuj" [routerLink]="['/category/edit',category.categoryId]">
             <mat-icon style="scale: 2; color: green">edit</mat-icon>
           </button>
-          <button mat-icon-button (click)="deactivateCategory(category.categoryId)">
+          <button mat-icon-button matTooltip="Usuń" (click)="deactivateCategory(category.categoryId)">
             <mat-icon style="scale: 2; color: red">delete</mat-icon>
           </button>
         </div>

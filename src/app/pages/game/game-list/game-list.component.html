@@ -17,13 +17,13 @@ box-shadow: 0px 0px 7px 0px rgba(207, 207, 207, 1);">
         <div style="margin: 8px; font-size: 24px">Ocena: {{game.gameRating}} / 10</div>
       </div>
       <div style="display:flex; justify-content: flex-end; align-items: center; column-gap: 24px; margin: 0 8px 8px 0">
-        <button style="scale: 2" mat-icon-button [routerLink]="['/game/details', game.gameId]">
+        <button style="scale: 2" mat-icon-button matTooltip="Szczegóły" [routerLink]="['/game/details', game.gameId]">
           <mat-icon style="color: #004a9f">info</mat-icon>
         </button>
-        <button style="scale: 2" mat-icon-button [routerLink]="['/game/edit',game.gameId]">
+        <button style="scale: 2" mat-icon-button matTooltip="Edytuj" [routerLink]="['/game/edit',game.gameId]">
           <mat-icon style="color: green">edit</mat-icon>
         </button>
-        <button style="scale: 2" mat-icon-button (click)="deleteGame(game.gameId)">
+        <button style="scale: 2" mat-icon-button matTooltip="Usuń" (click)="deleteGame(game.gameId)">
           <mat-icon style="color: red">delete</mat-icon>
         </button>
       </div>

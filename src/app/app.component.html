@@ -13,11 +13,11 @@
       </div>
       <span class="nav-name">Your Platform</span>
       <ul class="nav-list" *ngIf="!isMobile && user">
-        <a class="list-route" [routerLink]="['home']" [routerLinkActive]="['active2']"  (click)="closeMenu()">
+        <!--<a class="list-route" [routerLink]="['home']" [routerLinkActive]="['active2']"  (click)="closeMenu()">
           <li class="menu-name">
             Informacje
           </li>
-        </a>
+        </a>-->
         <a class="list-route" [routerLink]="['category','list']" [routerLinkActive]="['active2']"  (click)="closeMenu()">
           <li>
             Kategorie
@@ -37,11 +37,11 @@
   </nav>
   <menu class="container-menu" [ngClass]="isMenuClosed ? 'is-menu-open' : ''" *ngIf="isMobile">
     <ul class="menu-list">
-      <a class="list-item"  *ngIf="user" [routerLink]="['home']" [routerLinkActive]="['active']"  (click)="closeMenu()">
+      <!--<a class="list-item"  *ngIf="user" [routerLink]="['home']" [routerLinkActive]="['active']"  (click)="closeMenu()">
         <li class="item-name">
           Informacje
         </li>
-      </a>
+      </a>-->
       <a class="list-item"  [routerLink]="['category','list']" [routerLinkActive]="['active']"  (click)="closeMenu()">
         <li>
           Kategorie

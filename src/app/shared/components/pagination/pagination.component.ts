@@ -1,4 +1,4 @@
-import {Component, Input, OnChanges, OnInit, SimpleChanges} from '@angular/core';
+import {Component, Input, OnChanges, OnInit, SimpleChange, SimpleChanges} from '@angular/core';
 
 @Component({
   selector: 'app-pagination',
@@ -38,6 +38,10 @@ export class PaginationComponent implements OnInit, OnChanges{
 
   ngOnChanges(changes: SimpleChanges): void {
     this.totalPages = new Array(Math.ceil(this.collectionSize / this.pageSize));
+  }
+
+  changeLengthList(value: number){
+    this.totalPages = new Array(Math.ceil(this.collectionSize / value));
   }
 
   selectPageNumber(pageNumber: number): void{

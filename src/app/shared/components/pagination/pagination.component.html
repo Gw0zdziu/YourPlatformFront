@@ -1,7 +1,7 @@
 <div style="display: flex" *ngIf="collectionSize">
   <div class="container-pagination">
-    <select style="margin: 4px; border: none; height: 16px" name="page-size" id="page-size" [(ngModel)]="pageSize">
-      <option *ngFor="let size of pageSizes" value="{{size}}">{{size}}</option>
+    <select (change)="changeLengthList(pageSize)"  style="margin: 4px; border: none; height: fit-content; font-size: 24px; font-weight: 600; color: blueviolet" name="page-size" id="page-size" #select [(ngModel)]="pageSize">
+      <option *ngFor="let size of pageSizes"  value="{{size}}">{{size}}</option>
     </select>
   </div>
   <div class="container-pagination" >

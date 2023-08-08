@@ -50,7 +50,7 @@ export class AuthService {
       }))
   }
 
-  validateToken(): Observable<void>{
-    return this.http.get<void>(`${apiUrl}/auth/validate`)
+  validateToken(): Observable<boolean>{
+    return this.http.get<boolean>(`${apiUrl}/auth/check-token`)
   }
 }

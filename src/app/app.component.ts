@@ -28,21 +28,24 @@ export class AppComponent implements AfterViewInit, OnInit{
   }
 
   ngOnInit() {
-    this.authSvc.validateToken().subscribe({
+    this.user = this.authSvc.userValue;
+    /*this.authSvc.validateToken().subscribe({
       next: value => {
         if (value){
-          this.user = this.authSvc.userValue;
         }
       },
       error: error => {
         this.router.navigateByUrl('/auth/login')
-        this.notificationSvc.openNotification(error)
       }
-    })
+    })*/
   }
 
   closeMenu(isMenuClosed: any){
     this.isMenuClosed = isMenuClosed
+  }
+
+  isUserIsLogged(isLogged: any){
+    this.isLogged = isLogged;
   }
 
 

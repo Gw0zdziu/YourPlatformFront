@@ -9,12 +9,9 @@ import {User} from "../../shared/models/user/User";
   templateUrl: './nav.component.html',
   styleUrls: ['./nav.component.css']
 })
-export class NavComponent implements OnInit{
+export class NavComponent{
   @Input()
   isMenuClosed: boolean;
-
-  @Input()
-  isLogged: boolean;
 
   @Input()
   isMobile: boolean;
@@ -22,10 +19,8 @@ export class NavComponent implements OnInit{
   @Output()
   isMenuClosedEmitter = new EventEmitter<boolean>();
 
-  @Output()
-  isLoggedEmitter = new EventEmitter<boolean>()
-
   user: User | null;
+  menuAuth: boolean = false
 
   constructor(
     private notificationSvc: NotificationService,
@@ -33,15 +28,15 @@ export class NavComponent implements OnInit{
     private router: Router
   ) {
     this.authSvc.user.subscribe(x => this.user = x)
-    this.isLogged = this.user ? true : false;
   }
 
-  ngOnInit() {
-    this.user = this.authSvc.userValue;
-  }
   closeMenu(){
     this.isMenuClosed = !this.isMenuClosed;
     this.isMenuClosedEmitter.emit(this.isMenuClosed)
+  }
+
+  openMenuAuth(){
+    this.menuAuth = !this.menuAuth;
   }
 
   logout(){
@@ -49,7 +44,6 @@ export class NavComponent implements OnInit{
       next: () => {
         this.router.navigateByUrl('')
         this.notificationSvc.openNotification('Pomyślnie wylogowano')
-        this.isLogged = !this.isLogged;
       },
       error: err => {
         this.notificationSvc.openNotification(err.error.message)

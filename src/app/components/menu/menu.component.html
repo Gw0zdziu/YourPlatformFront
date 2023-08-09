@@ -15,5 +15,25 @@
         Gry
       </li>
     </a>
+    <a class="list-item" *ngIf="user"  [routerLink]="['game','list']" [routerLinkActive]="['active']"  (click)="closeMenu()">
+      <li>
+        Ustawienia
+      </li>
+    </a>
+    <a class="list-item" *ngIf="!user"  [routerLink]="['auth','login']" [routerLinkActive]="['active']"  (click)="closeMenu()">
+      <li>
+        Zaloguj
+      </li>
+    </a>
+    <a class="list-item" *ngIf="!user"  [routerLink]="['auth','register']" [routerLinkActive]="['active']"  (click)="closeMenu()">
+      <li>
+        Zarejestruj
+      </li>
+    </a>
+    <a class="list-item" *ngIf="user"  [routerLinkActive]="['active']"  (click)="closeMenu(); logout()">
+      <li>
+        Wyloguj
+      </li>
+    </a>
   </ul>
 </menu>

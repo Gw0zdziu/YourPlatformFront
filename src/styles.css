@@ -2,3 +2,20 @@
 html, body { height: 100%;}
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif;  }
 
+.overlay-backdrop {
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.overlay-panel {
+  display: flex;
+  flex-direction: column;
+  background-color: #ffffff;
+  padding: 20px;
+}
+
+.text-button {
+  margin-top: 5px;
+  background-color: transparent;
+  border: none;
+  color: rgba(0, 0, 0, 0.8);
+}

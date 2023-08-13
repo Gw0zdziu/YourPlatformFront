@@ -1,5 +1,6 @@
 <div *ngIf="category">
-  <h1>{{category.categoryName}}</h1>
-  <span>{{category.categoryDesc}}</span>
+  <div>{{category.categoryName}}</div>
+  <div>{{category.categoryDesc}}</div>
+  <button type="button" class="text-button" (click)="close()">OK</button>
 </div>
 

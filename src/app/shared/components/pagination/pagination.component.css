@@ -4,6 +4,7 @@
   justify-content: center;
   width: 100%;
   margin: 16px 8px;
+  padding: 4px;
   border-radius: 8px;
   -webkit-box-shadow: 0px 0px 7px 0px rgba(207, 207, 207, 1);
   -moz-box-shadow: 0px 0px 7px 0px rgba(207, 207, 207, 1);
@@ -17,6 +18,7 @@
   column-gap: 8px;
   padding: 2px;
   list-style-type: none;
+  height: 0;
 }
 
 .page-link{
@@ -34,7 +36,6 @@
 }
 
 .page-active{
-  border: 2px blueviolet solid;
   border-radius: 8px;
   color: blueviolet;
 }

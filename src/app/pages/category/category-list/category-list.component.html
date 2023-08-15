@@ -1,32 +1,30 @@
-  <div style="display:flex; flex-direction: column; align-items: center; row-gap: 16px; margin-top: 16px">
-    <div style="display: flex; justify-content: flex-end; width: 100%;">
-      <button class="button-9" [routerLink]="['/category/create']">Dodaj</button>
+  <div class="list">
+    <div class="list-button">
+      <button class="button-add" [routerLink]="['/category/create']">Dodaj</button>
     </div>
-    <div style="display: flex; flex-direction: column; align-items: center; row-gap: 16px; width: 100%">
-      <div *ngIf="!categoriesList.length">
-        <span style="font-size: 32px">Brak kategorii</span>
-      </div>
+    <div class="container-list">
+      <ng-container *ngIf="!categoriesList.length">
+        <span>Brak kategorii</span>
+      </ng-container>
       <div *ngFor="let category of categoriesList | slice
                 : (pagination.currentPage - 1) * pagination.pageSize
-                : pagination.currentPage * pagination.pageSize" style="display: grid; grid-template-columns: 1fr; grid-template-rows: 1fr 2fr; width: 95%; -webkit-box-shadow: 0px 0px 7px 0px rgba(207, 207, 207, 1);
--moz-box-shadow: 0px 0px 7px 0px rgba(207, 207, 207, 1);
-box-shadow: 0px 0px 7px 0px rgba(207, 207, 207, 1);">
-          <div style="margin: 8px; font-size: 32px;">{{category.categoryName}}</div>
-          <div style="margin: 8px; font-size: 24px">Liczba gier: {{category.gameCount}}</div>
-        <div style="display:flex; justify-content: flex-end; align-items: center; column-gap: 24px; margin: 0 8px 8px 0">
+                : pagination.currentPage * pagination.pageSize" class="list-body">
+          <div class="category-name">{{category.categoryName}}</div>
+          <div class="category-desc">Liczba gier: {{category.gameCount}}</div>
+        <div class="container-icon">
           <button mat-icon-button matTooltip="Szczegóły" (click)="openDetails(category.categoryId)">
-            <mat-icon style="scale: 2; color: #004a9f">info</mat-icon>
+            <mat-icon class="icon details">info</mat-icon>
           </button>
           <button mat-icon-button matTooltip="Edytuj" [routerLink]="['/category/edit',category.categoryId]">
-            <mat-icon style="scale: 2; color: green">edit</mat-icon>
+            <mat-icon class="icon edit">edit</mat-icon>
           </button>
           <button mat-icon-button matTooltip="Usuń" (click)="deactivateCategory(category.categoryId)">
-            <mat-icon style="scale: 2; color: red">delete</mat-icon>
+            <mat-icon class="icon delete">delete</mat-icon>
           </button>
         </div>
       </div>
     </div>
-    <div style="display: flex; justify-content: center; width: 100%" >
+    <div class="container-pagination">
         <app-pagination [collectionSize]="categoriesList.length"  [firstLastButtons] = "true" [maxSize]="2" #pagination ></app-pagination>
     </div>
   </div>

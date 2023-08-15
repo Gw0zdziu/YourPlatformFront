@@ -43,5 +43,5 @@
 }
 
 .container-menu.is-menu-open{
-  transform: translateX(-100%);
+  transform: translateX(-105%);
 }

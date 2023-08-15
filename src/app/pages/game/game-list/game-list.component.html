@@ -1,35 +1,33 @@
-<div style="display:flex; flex-direction: column; align-items: center; row-gap: 16px; margin-top: 16px">
-  <div style="display: flex; justify-content: flex-end; width: 100%;">
-    <button class="button-9" [routerLink]="['/game/create']">Dodaj</button>
+<div class="list">
+  <div class="list-button">
+    <button class="button-add" [routerLink]="['/game/create']">Dodaj</button>
   </div>
-  <div style="display: flex; flex-direction: column; align-items: center; row-gap: 16px; width: 100%">
+  <div class="container-list">
     <div *ngIf="!gamesList.length">
-      <span style="font-size: 32px">Brak gier</span>
+      <span>Brak gier</span>
     </div>
     <div *ngFor="let game of gamesList | slice
                 : (pagination.currentPage - 1) * pagination.pageSize
-                : pagination.currentPage * pagination.pageSize" style="display: grid; grid-template-columns: 1fr; grid-template-rows: 1fr 2fr; width: 95%; -webkit-box-shadow: 0px 0px 7px 0px rgba(207, 207, 207, 1);
--moz-box-shadow: 0px 0px 7px 0px rgba(207, 207, 207, 1);
-box-shadow: 0px 0px 7px 0px rgba(207, 207, 207, 1);">
-      <div style="margin: 8px; font-size: 32px;">{{game.gameName}}</div>
-      <div style="display: block;">
-        <div style="margin: 8px; font-size: 24px">Kategoria: {{game.category.categoryName}}</div>
-        <div style="margin: 8px; font-size: 24px">Ocena: {{game.gameRating}} / 10</div>
+                : pagination.currentPage * pagination.pageSize" class="list-body">
+      <div class="game-name">{{game.gameName}}</div>
+      <div>
+        <div class="game-desc">Kategoria: {{game.category.categoryName}}</div>
+        <div class="game-rating">Ocena: {{game.gameRating}} / 10</div>
       </div>
-      <div style="display:flex; justify-content: flex-end; align-items: center; column-gap: 24px; margin: 0 8px 8px 0">
-        <button style="scale: 2" mat-icon-button matTooltip="Szczegóły" [routerLink]="['/game/details', game.gameId]">
-          <mat-icon style="color: #004a9f">info</mat-icon>
+      <div class="container-icon">
+        <button mat-icon-button matTooltip="Szczegóły" [routerLink]="['/game/details', game.gameId]">
+          <mat-icon class="icon details">info</mat-icon>
         </button>
-        <button style="scale: 2" mat-icon-button matTooltip="Edytuj" [routerLink]="['/game/edit',game.gameId]">
-          <mat-icon style="color: green">edit</mat-icon>
+        <button mat-icon-button matTooltip="Edytuj" [routerLink]="['/game/edit',game.gameId]">
+          <mat-icon class="icon edit">edit</mat-icon>
         </button>
-        <button style="scale: 2" mat-icon-button matTooltip="Usuń" (click)="deleteGame(game.gameId)">
-          <mat-icon style="color: red">delete</mat-icon>
+        <button mat-icon-button matTooltip="Usuń" (click)="deleteGame(game.gameId)">
+          <mat-icon class="icon delete">delete</mat-icon>
         </button>
       </div>
     </div>
   </div>
-  <div style="display: flex; justify-content: center; width: 100%" >
+  <div class="container-pagination" >
     <app-pagination [collectionSize]="gamesList.length"  [firstLastButtons] = "true" [maxSize]="2" #pagination ></app-pagination>
   </div>
 </div>

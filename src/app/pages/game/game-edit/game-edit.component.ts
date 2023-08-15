@@ -95,7 +95,6 @@ export class GameEditComponent implements OnInit{
       gameRating: this.gameForm.get('gameRating')?.value,
       categoryId: this.gameForm.get('categoryId')?.value
     }
-    console.log(updatedGame)
     this.gameSvc.updateGame(this.gameId, updatedGame).subscribe({
       next: () => {
         this.notificationSvc.openNotification('Pomyślnie zaktualizowano grę')

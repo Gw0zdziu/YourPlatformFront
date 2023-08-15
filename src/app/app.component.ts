@@ -11,7 +11,7 @@ import {NotificationService} from "./shared/services/snackbar/notification.servi
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css'],
 })
-export class AppComponent implements AfterViewInit, OnInit{
+export class AppComponent implements AfterViewInit{
   isMenuClosed: boolean = true;
   isMobile: boolean;
   user?: User | null;
@@ -23,25 +23,24 @@ export class AppComponent implements AfterViewInit, OnInit{
     private router: Router,
     private notificationSvc: NotificationService
   ) {
-      this.authSvc.user.subscribe(x => this.user = x)
-      this.isLogged = this.user ? true : false;
-  }
-
-  ngOnInit() {
+    this.router.navigate(['category','list'])
     this.user = this.authSvc.userValue;
-    /*this.authSvc.validateToken().subscribe({
+    this.authSvc.validateToken().subscribe({
       next: value => {
         if (value){
+          this.authSvc.user.subscribe(x => this.user = x)
+          this.isLogged = this.user ? true : false;
         }
       },
       error: error => {
         this.router.navigateByUrl('/auth/login')
       }
-    })*/
+    })
   }
 
   closeMenu(isMenuClosed: any){
     this.isMenuClosed = isMenuClosed
+    document.body.style.overflow = this.isMenuClosed ? 'visible' : 'hidden';
   }
 
   isUserIsLogged(isLogged: any){

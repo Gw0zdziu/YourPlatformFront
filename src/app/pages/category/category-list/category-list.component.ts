@@ -28,7 +28,6 @@ export class CategoryListComponent implements OnInit{
     const dialogRef = this.dialogSvc.open(CategoryDetailsComponent, { data: categoryId });
 
     dialogRef.afterClosed().subscribe(() => {
-      console.log('Dialog closed!');
     });
   }
 

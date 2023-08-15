@@ -35,9 +35,7 @@ export class LoginComponent implements OnInit{
     this.authSvc.signIn(credentials)
       .subscribe({
         next: () => {
-          const returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/'
-          this.router.navigateByUrl(returnUrl);
-          this.snackbarService.openNotification('Zalogowano pomyślnie')
+          this.router.navigate(['category','list'])
         },
         error: err => {
           this.snackbarService.openNotification(err)

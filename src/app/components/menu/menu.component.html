@@ -1,10 +1,5 @@
 <menu class="container-menu" [ngClass]="isMenuClosed ? 'is-menu-open' : ''" *ngIf="isMobile">
   <ul class="menu-list">
-    <!--<a class="list-item"  *ngIf="user" [routerLink]="['home']" [routerLinkActive]="['active']"  (click)="closeMenu()">
-      <li class="item-name">
-        Informacje
-      </li>
-    </a>-->
     <a class="list-item"  [routerLink]="['category','list']" [routerLinkActive]="['active']"  (click)="closeMenu()">
       <li>
         Kategorie
@@ -15,7 +10,7 @@
         Gry
       </li>
     </a>
-    <a class="list-item" *ngIf="user" [routerLinkActive]="['active']"  (click)="closeMenu()">
+    <a class="list-item" *ngIf="user" [routerLink]="['settings']" [routerLinkActive]="['active']"  (click)="closeMenu()">
       <li>
         Ustawienia
       </li>

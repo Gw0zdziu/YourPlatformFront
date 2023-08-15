@@ -34,7 +34,7 @@
         <mat-icon style="scale: 1.5; color: white">person</mat-icon>
       </button>
       <mat-menu #menu="matMenu">
-        <a mat-menu-item *ngIf="user">
+        <a mat-menu-item *ngIf="user" [routerLink]="['settings']">
           <mat-icon>settings</mat-icon>
           <span>Ustawienia</span>
         </a>

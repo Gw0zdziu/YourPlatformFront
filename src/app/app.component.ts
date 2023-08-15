@@ -23,7 +23,6 @@ export class AppComponent implements AfterViewInit{
     private router: Router,
     private notificationSvc: NotificationService
   ) {
-    this.router.navigate(['category','list'])
     this.user = this.authSvc.userValue;
     this.authSvc.validateToken().subscribe({
       next: value => {

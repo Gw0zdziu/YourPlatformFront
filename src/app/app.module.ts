@@ -15,9 +15,12 @@ import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import {JwtInterceptor} from 'src/app/shared/helpers/interceptors/jwt/jwt.interceptor';
 import {LoaderInterceptor} from 'src/app/shared/helpers/interceptors/loader/loader.interceptor';
 import {ErrorInterceptor} from "./shared/helpers/interceptors/error/error.interceptor";
-import {FormsModule} from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { NavComponent } from './components/nav/nav.component';
 import { MenuComponent } from './components/menu/menu.component';
+import { SettingsComponent } from './pages/settings/settings.component';
+import { UpdatePasswordComponent } from './components/update-password/update-password.component';
+import { UpdateUsernameComponent } from './components/update-username/update-username.component';
 
 @NgModule({
   declarations: [
@@ -26,6 +29,9 @@ import { MenuComponent } from './components/menu/menu.component';
     InformationComponent,
     NavComponent,
     MenuComponent,
+    SettingsComponent,
+    UpdatePasswordComponent,
+    UpdateUsernameComponent,
   ],
   imports: [
     BrowserModule,
@@ -38,7 +44,8 @@ import { MenuComponent } from './components/menu/menu.component';
     CategoryModule,
     GameModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [
     {

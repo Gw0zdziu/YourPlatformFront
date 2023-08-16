@@ -3,6 +3,9 @@ import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {UpdateUsername} from "../../shared/models/user/UpdateUsername";
 import {User} from "../../shared/models/user/User";
 import {UserService} from "../../shared/services/http/user/user.service";
+import {AuthService} from "../../shared/services/http/auth/auth.service";
+import {Router} from "@angular/router";
+import {NotificationService} from "../../shared/services/snackbar/notification.service";
 
 @Component({
   selector: 'app-update-username',
@@ -15,6 +18,9 @@ export class UpdateUsernameComponent {
   constructor(
     private fb: FormBuilder,
     private userSvc: UserService,
+    private authSvc: AuthService,
+    private router: Router,
+    private notificationSvc: NotificationService,
   ) {
     this.updateUsernameForm = this.fb.group({
       username: ['', Validators.required],
@@ -27,12 +33,12 @@ export class UpdateUsernameComponent {
       username: this.updateUsernameForm.get('username')?.value
     }
     this.userSvc.updateUsername(updateUsername).subscribe({
-      next: value => {
-        const newUsername = updateUsername.username
-        console.log(this.user)
+      next: () => {
+        this.authSvc.logout();
+        this.router.navigate(['auth','login'])
       },
       error: err => {
-        console.log(err)
+        this.notificationSvc.openNotification(err);
       }
     })
   }

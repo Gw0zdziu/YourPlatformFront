@@ -39,12 +39,11 @@ export class RegisterComponent implements OnInit{
       .pipe(first())
       .subscribe({
         next: () => {
-          this.router.navigate(['login']);
+          this.router.navigate(['auth','login']);
           this.notificationSvc.openNotification('Pomyślnie zarejestrowano użytkownika')
         },
         error: err => {
-          const {error} = err;
-          this.notificationSvc.openNotification(error.message)
+          this.notificationSvc.openNotification(err)
         }
       })
   }

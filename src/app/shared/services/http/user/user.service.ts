@@ -3,6 +3,7 @@ import {HttpClient} from "@angular/common/http";
 import {UpdateUsername} from "../../../models/user/UpdateUsername";
 import {Observable} from "rxjs";
 import {environment} from "../../../../../environments/environment.development";
+import {UpdatePassword} from "../../../models/user/UpdatePassword";
 
 const apiUrl = environment.apiUrl
 
@@ -17,6 +18,10 @@ export class UserService {
   ) { }
 
   updateUsername(updateUsername: UpdateUsername): Observable<void>{
-    return this.http.patch<void>(`${apiUrl}/user/update-username`, updateUsername )
+    return this.http.put<void>(`${apiUrl}/user/update-username`, updateUsername )
+  }
+
+  updatePassword(updatePassword: UpdatePassword): Observable<void>{
+    return this.http.put<void>(`${apiUrl}/user/update-password`, updatePassword )
   }
 }

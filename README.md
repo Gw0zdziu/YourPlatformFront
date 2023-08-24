@@ -1,27 +1,52 @@
-# YourPlatformFront
+<p align="center">YourPlatformBack</p>
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.1.3.
 
-## Development server
+## Description
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+Application API for storing information about played games.
 
-## Code scaffolding
+## Feature
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+- [x] Create user
+- [x] Login user
+- [x] Add category
+- [x] Edit category
+- [x] Deactivate category
+- [x] Add game
+- [x] Edit game
+- [x] Delete game
+- [x] Update username
+- [x] Update password
 
-## Build
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+## Future feature 
 
-## Running unit tests
+- [ ] Confirm created user by email
+- [ ] Update password by send email
+- [ ] Add remind passwords before login
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+## Installation
 
-## Running end-to-end tests
+```bash
+$ npm install
+```
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+## Requirements
 
-## Further help
+- Add .env
+- Create Postgresql server
+- Initialization database from sql script
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+## Running the app
+
+```bash
+# development
+$ npm run start
+
+# watch mode
+$ npm run start:dev
+
+# production mode
+$ npm run start:prod
+```
+

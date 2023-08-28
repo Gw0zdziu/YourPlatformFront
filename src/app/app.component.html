@@ -3,9 +3,9 @@
     <app-nav [isMenuClosed]="isMenuClosed" [isMobile]="isMobile" (isMenuClosedEmitter)="closeMenu($event)" ></app-nav>
   </div>
   <div style="width: 100%">
-    <app-menu [isMobile] = "isMobile"  [isMenuClosed]="isMenuClosed" (isMenuClosedEmitter) = "closeMenu($event)" (isLoggedEmitter)="isUserIsLogged($event)"></app-menu>
+    <app-menu [isMobile] = "isMobile"  [isMenuClosed]="isMenuClosed" (isMenuClosedEmitter) = "closeMenu($event)" ></app-menu>
   </div>
-  <section class="container-content" [ngClass]="!isMenuClosed && isMobile ? 'inactive' : ''"  [style.width.%]="isMobile ? '100' : '70'">
+  <section class="container-content" [ngClass]="!isMenuClosed && isMobile ? 'inactive' : ''"  [style.width.%]="isMobile ? '100' : '60'">
     <router-outlet></router-outlet>
   </section>
 </div>

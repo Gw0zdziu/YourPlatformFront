@@ -41,13 +41,6 @@ export class AppComponent implements AfterViewInit{
     this.isMenuClosed = isMenuClosed
     document.body.style.overflow = this.isMenuClosed ? 'visible' : 'hidden';
   }
-
-  isUserIsLogged(isLogged: any){
-    this.isLogged = isLogged;
-  }
-
-
-
   ngAfterViewInit() {
     this.breakpointObserver.observe(Breakpoints.XSmall).subscribe(result => {
       this.isMobile = result.matches;

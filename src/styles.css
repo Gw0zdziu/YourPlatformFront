@@ -4,6 +4,8 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif}
 
 .overlay-backdrop {
   background-color: rgba(98, 98, 98, 0.25);
+  cursor: none;
+  pointer-events: none;
 }
 
 .overlay-panel {
@@ -13,7 +15,14 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif}
   padding: 20px;
   min-height: 256px;
   min-width: 256px;
+  max-width: 60%;
   border-radius: 8px;
   box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
 }
 
+@media only screen and (max-width: 600px) {
+  .overlay-panel{
+    width: 90%;
+    max-width: 90%;
+  }
+}

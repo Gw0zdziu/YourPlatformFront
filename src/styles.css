@@ -3,19 +3,17 @@ html, body { height: 100%;}
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif}
 
 .overlay-backdrop {
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: rgba(98, 98, 98, 0.25);
 }
 
 .overlay-panel {
   display: flex;
   flex-direction: column;
-  background-color: #ffffff;
+  background-color: #fff4f4;
   padding: 20px;
+  min-height: 256px;
+  min-width: 256px;
+  border-radius: 8px;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
 }
 
-.text-button {
-  margin-top: 5px;
-  background-color: transparent;
-  border: none;
-  color: rgba(0, 0, 0, 0.8);
-}

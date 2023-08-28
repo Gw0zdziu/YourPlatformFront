@@ -1,0 +1,42 @@
+.container{
+}
+
+.container-header{
+  width: 100%;
+  font-size: 36px;
+}
+
+.container-body{
+  display: flex;
+  flex-direction: column;
+  row-gap: 12px;
+  width: 100%;
+  margin: 24px 0;
+}
+
+.body-item{
+
+}
+
+.item-header{
+  font-weight: bold;
+  font-size: 24px;
+}
+
+.item-name{
+  font-size: 24px;
+}
+
+.container-button{
+  display: flex;
+  justify-content: center;
+}
+
+.button{
+  padding: 8px 24px;
+  border: none;
+  border-radius: 8px;
+  font-size: 24px;
+  background-color: blueviolet;
+  color: white;
+}

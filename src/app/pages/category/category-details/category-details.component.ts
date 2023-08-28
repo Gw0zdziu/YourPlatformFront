@@ -15,7 +15,6 @@ export class CategoryDetailsComponent implements OnInit{
 
   constructor(
     private categorySvc: CategoryService,
-    private route: ActivatedRoute,
     private dialogRef: DialogRef,
     @Inject(DIALOG_DATA) public data: string
   ) {}

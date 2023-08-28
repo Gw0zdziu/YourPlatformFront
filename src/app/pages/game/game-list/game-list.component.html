@@ -15,7 +15,7 @@
         <div class="game-rating">Ocena: {{game.gameRating}} / 10</div>
       </div>
       <div class="container-icon">
-        <button mat-icon-button matTooltip="Szczegóły" [routerLink]="['/game/details', game.gameId]">
+        <button mat-icon-button matTooltip="Szczegóły" (click)="openDetails(game.gameId)">
           <mat-icon class="icon details">info</mat-icon>
         </button>
         <button mat-icon-button matTooltip="Edytuj" [routerLink]="['/game/edit',game.gameId]">

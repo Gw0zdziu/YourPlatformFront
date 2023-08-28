@@ -1,7 +1,21 @@
-<div *ngIf="game">
-  <h1>{{game.gameName}}</h1>
-  <div>{{game.gameDesc}}</div>
-  <div>{{game.gameRating}} / 10</div>
-  <div>{{categoryName}}</div>
+<div *ngIf="game" class="container">
+  <div class="container-header">Szczegóły</div>
+  <div class="container-body">
+    <div class="body-item">
+      <div class="item-header">Nazwa:</div><div class="item-name">{{game.gameName}}</div>
+    </div>
+    <div class="body-item">
+      <div class="item-header">Opis:</div><div class="item-name">{{game.gameDesc}}</div>
+    </div>
+    <div class="body-item">
+      <div class="item-header">Kategoria:</div><div class="item-name">{{categoryName}}</div>
+    </div>
+    <div class="body-item">
+      <div class="item-header">Ilość gier:</div><div class="item-name">{{game.gameRating / 10}}</div>
+    </div>
+  </div>
+  <div class="container-button">
+    <button type="button" class="button" (click)="close()">OK</button>
+  </div>
 </div>
 

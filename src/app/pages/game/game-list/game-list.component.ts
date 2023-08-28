@@ -3,6 +3,9 @@ import {GameService} from 'src/app/shared/services/http/game/game.service';
 import {GameList} from 'src/app/shared/models/http/game/GameList';
 import {LoaderService} from 'src/app/shared/services/loader/loader.service';
 import {GlobalService} from 'src/app/shared/services/global/global.service';
+import {CategoryDetailsComponent} from "../../category/category-details/category-details.component";
+import {DialogService} from "../../../shared/services/dialog/dialog.service";
+import {GameDetailsComponent} from "../game-details/game-details.component";
 
 @Component({
   selector: 'app-game-list',
@@ -14,7 +17,8 @@ export class GameListComponent implements OnInit{
   constructor(
     private gameSvc: GameService,
     private loaderSvc: LoaderService,
-    private globalSvc: GlobalService
+    private globalSvc: GlobalService,
+    private dialogSvc: DialogService
   ) {
   }
 
@@ -37,6 +41,13 @@ export class GameListComponent implements OnInit{
         this.loaderSvc.hide()
       }
     })
+  }
+
+  openDetails(gameId: string) {
+    const dialogRef = this.dialogSvc.open(GameDetailsComponent, { data: gameId });
+
+    dialogRef.afterClosed().subscribe(() => {
+    });
   }
 
 }

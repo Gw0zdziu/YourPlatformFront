@@ -37,7 +37,7 @@ export class MenuComponent{
   logout(){
     this.authSvc.logout().subscribe({
       next: () => {
-        this.router.navigateByUrl('')
+        this.router.navigate(['auth','login'])
         this.notificationSvc.openNotification('Pomyślnie wylogowano')
       },
       error: err => {

@@ -32,7 +32,7 @@ export class AppComponent implements AfterViewInit{
         }
       },
       error: error => {
-        this.router.navigateByUrl('/auth/login')
+        this.router.navigate(['auth','login'])
       }
     })
   }

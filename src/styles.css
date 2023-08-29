@@ -20,6 +20,29 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif}
   box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
 }
 
+.auth-form{
+  display: grid;
+  row-gap: 24px;
+}
+
+.form-field{
+  display: grid;
+  row-gap: 4px;
+}
+
+.field-input{
+  min-height: 32px;
+  min-width: 256px;
+  border: 1px solid black;
+  border-radius: 4px;
+  padding: 4px 8px;
+  font-size: 18px;
+}
+
+.field-label{
+
+}
+
 @media only screen and (max-width: 600px) {
   .overlay-panel{
     width: 90%;

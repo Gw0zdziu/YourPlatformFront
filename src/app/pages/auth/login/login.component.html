@@ -1,25 +1,17 @@
 <div style="display:flex; flex-direction: column; align-items: center; row-gap: 10px; margin-top: 100px">
   <div style="font-size: 24px">Logowanie</div>
-  <form [formGroup]="loginForm" class="auth-form"  (ngSubmit)="onSubmit()">
-    <div class="form-field">
-      <label class="field-label">Nazwa użytkownika</label>
-      <input class="field-input" formControlName="username">
-      <div *ngIf="loginForm.controls['username'].invalid && (loginForm.controls['username'].dirty || loginForm.controls['username'].touched)">
-        <div style="color: #ff2424; font-size: 14px" *ngIf="loginForm.controls['username']?.errors?.required">
-          Nazwa użytkownika jest wymagana
-        </div>
-      </div>
-    </div>
-
-    <div class="form-field">
-      <label class="field-label">Hasło</label>
-      <input class="field-input" type="password" #password formControlName="password" [type]="hide ? 'password' : 'text'">
-      <div *ngIf="loginForm.controls['password'].invalid && (loginForm.controls['password'].dirty || loginForm.controls['password'].touched)">
-        <div style="color: #ff2424; font-size: 14px" *ngIf="loginForm.controls['password']?.errors?.required">
-          Hasło jest wymagane
-        </div>
-      </div>
-    </div>
+  <form [formGroup]="loginForm" style="display: flex; flex-direction: column; row-gap: 10px; width: 320px" (ngSubmit)="onSubmit()">
+    <mat-form-field appearance="outline">
+      <mat-label>Nazwa użytkownika</mat-label>
+      <input matInput formControlName="username">
+      <mat-error *ngIf="loginForm.get('username')?.errors?.required">Nazwa użytkownika jest wymagana</mat-error>
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>Hasło</mat-label>
+      <input  matInput type="password" #password formControlName="password" [type]="hide ? 'password' : 'text'">
+      <mat-icon matSuffix mat-icon-button *ngIf="password.value" [matTooltip]="hide ? 'Odkryj hasło' : 'Ukryj hasło'" [matTooltipPosition]="'after'" (click)="hide = !hide">{{hide ? 'visibility' : 'visibility_off'}}</mat-icon>
+      <mat-error *ngIf="loginForm.get('password')?.errors?.required">Hasło jest wymagane</mat-error>
+    </mat-form-field>
     <button mat-raised-button color="primary" style="height: 40px" [disabled]="loginForm.invalid">
       Zaloguj
     </button>

@@ -82,6 +82,19 @@
   font-weight: 500;
 }
 
+.active2{
+  position: relative;
+}
+
+.active2::before{
+  position: absolute;
+  bottom: 0;
+  height: 3px;
+  width: 100%;
+  background-color: #fff;
+  content: "";
+}
+
 .list-route::before{
   position: absolute;
   bottom: 0;

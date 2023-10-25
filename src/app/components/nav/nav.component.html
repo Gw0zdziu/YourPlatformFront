@@ -12,26 +12,21 @@
       </div>
       <span class="nav-name">Your Platform</span>
       <ul class="nav-list" *ngIf="!isMobile && user">
-        <!--<a class="list-route" [routerLink]="['home']" [routerLinkActive]="['active2']"  (click)="closeMenu()">
-          <li class="menu-name">
-            Informacje
-          </li>
-        </a>-->
-        <a class="list-route" [routerLink]="['category','list']" [routerLinkActive]="['active2']"  (click)="closeMenu()">
-          <li>
+        <li class="list-route" [routerLink]="['category','list']" [routerLinkActive]="['active2']"  (click)="closeMenu()">
+          <a>
             Kategorie
-          </li>
-        </a>
-        <a class="list-route" [routerLink]="['game','list']" [routerLinkActive]="['active2']"  (click)="closeMenu()">
-          <li>
+          </a>
+        </li>
+        <li class="list-route" [routerLink]="['game','list']" [routerLinkActive]="['active2']"  (click)="closeMenu()">
+          <a>
             Gry
-          </li>
-        </a>
+          </a>
+        </li>
       </ul>
     </div>
     <ng-container *ngIf="!isMobile">
       <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
-        <mat-icon style="scale: 1.5; color: white">person</mat-icon>
+        <mat-icon style="scale: 1.5; color: var(--secondary)">person</mat-icon>
       </button>
       <mat-menu #menu="matMenu">
         <a mat-menu-item *ngIf="user" [routerLink]="['settings']">
@@ -51,8 +46,5 @@
           <span>Wyloguj</span>
         </a>
       </mat-menu>
-
-      <!--<button class="nav-auth" (click)="isMobile && closeMenu()" *ngIf="!user" [routerLink]="['auth','login']">Zaloguj</button>
-      <button class="nav-auth" (click)="logout(); closeMenu()" *ngIf="user" [routerLink]="['']">Wyloguj</button>-->
     </ng-container>
   </nav>

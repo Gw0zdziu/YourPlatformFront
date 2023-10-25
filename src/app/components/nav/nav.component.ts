@@ -34,16 +34,12 @@ export class NavComponent{
     this.isMenuClosed = !this.isMenuClosed;
     this.isMenuClosedEmitter.emit(this.isMenuClosed)
   }
-
-  openMenuAuth(){
-    this.menuAuth = !this.menuAuth;
-  }
-
   logout(){
     this.authSvc.logout().subscribe({
       next: () => {
-        this.router.navigate(['auth','login'])
-        this.notificationSvc.openNotification('Pomyślnie wylogowano')
+        this.router.navigate(['auth','login']).then(() => {
+          this.notificationSvc.openNotification('Pomyślnie wylogowano')
+        })
       },
       error: err => {
         this.notificationSvc.openNotification(err.error.message)

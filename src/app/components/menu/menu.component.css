@@ -31,7 +31,7 @@
 
 .list-item {
   text-decoration: none;
-  color: blueviolet;
+  color: var(--secondary);
   font-size: 21px;
   font-weight: 700;
   line-height: 27px;
@@ -39,7 +39,7 @@
 }
 
 .active{
-  border-left: blueviolet 4px solid;
+  border-left: var(--primary) 4px solid;
 }
 
 .container-menu.is-menu-open{

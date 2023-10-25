@@ -9,12 +9,12 @@
 
 .list-button{
   display: flex;
-  justify-content: flex-end;
+  justify-content: center;
   width: 95%;
 }
 
 .button-add {
-  background-color: #8a2be2;
+  background-color: var(--primary);
   border-radius: 6px;
   border-width: 0;
   cursor: pointer;

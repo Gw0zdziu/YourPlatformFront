@@ -9,7 +9,7 @@
 
 .list-button{
   display: flex;
-  justify-content: center;
+  justify-content: end;
   width: 95%;
 }
 
@@ -26,10 +26,12 @@
   text-align: center;
   font-size: 24px;
   line-height: 24px;
+  transition: 250ms ease-in-out;
 }
 
 .button-add:hover{
   background-color: #a75cf1;
+  transition: 250ms ease-in-out;
 }
 
 .container-list{

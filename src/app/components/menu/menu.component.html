@@ -1,34 +1,34 @@
-<menu class="container-menu" [ngClass]="isMenuClosed ? 'is-menu-open' : ''" *ngIf="isMobile">
+<div class="container-menu" [ngClass]="isMenuClosed ? 'is-menu-open' : ''" *ngIf="isMobile">
   <ul class="menu-list">
-    <a class="list-item"  [routerLink]="['category','list']" [routerLinkActive]="['active']"  (click)="closeMenu()">
-      <li>
+    <li (click)="closeMenu()" *ngIf="user">
+      <a class="list-item" [routerLink]="['category','list']" [routerLinkActive]="['active']">
         Kategorie
-      </li>
-    </a>
-    <a class="list-item"  [routerLink]="['game','list']" [routerLinkActive]="['active']"  (click)="closeMenu()">
-      <li>
+      </a>
+    </li>
+    <li (click)="closeMenu()" *ngIf="user">
+      <a class="list-item"  [routerLink]="['game','list']" [routerLinkActive]="['active']">
         Gry
-      </li>
-    </a>
-    <a class="list-item" *ngIf="user" [routerLink]="['settings']" [routerLinkActive]="['active']"  (click)="closeMenu()">
-      <li>
+      </a>
+    </li>
+    <li (click)="closeMenu()" *ngIf="user">
+      <a class="list-item" *ngIf="user" [routerLink]="['settings']" [routerLinkActive]="['active']">
         Ustawienia
-      </li>
-    </a>
-    <a class="list-item" *ngIf="!user"  [routerLink]="['auth','login']" [routerLinkActive]="['active']"  (click)="closeMenu()">
-      <li>
+      </a>
+    </li>
+    <li (click)="closeMenu()">
+      <a class="list-item" *ngIf="!user"  [routerLink]="['auth','login']" [routerLinkActive]="['active']">
         Zaloguj
-      </li>
-    </a>
-    <a class="list-item" *ngIf="!user"  [routerLink]="['auth','register']" [routerLinkActive]="['active']"  (click)="closeMenu()">
-      <li>
+      </a>
+    </li>
+    <li (click)="closeMenu()">
+      <a class="list-item" *ngIf="!user"  [routerLink]="['auth','register']" [routerLinkActive]="['active']">
         Zarejestruj
-      </li>
-    </a>
-    <a class="list-item" *ngIf="user"  [routerLinkActive]="['active']"  (click)="closeMenu(); logout()">
-      <li>
+      </a>
+    </li>
+    <li  (click)="closeMenu(); logout()">
+      <a class="list-item" *ngIf="user"  [routerLinkActive]="['active']">
         Wyloguj
-      </li>
-    </a>
+      </a>
+    </li>
   </ul>
-</menu>
+</div>

@@ -1,12 +1,12 @@
-<div style="display:flex; flex-direction: column; align-items: center; row-gap: 10px; margin-top: 100px">
-  <span  style="font-size: 24px">Zmiana nazwy użytkownika</span>
-  <form [formGroup]="updateUsernameForm" style="display: flex; flex-direction: column; row-gap: 10px; width: 320px" (ngSubmit)="updateUsername()">
+<div class="container-change-username">
+  <span  class="change-username-header">Zmiana nazwy użytkownika</span>
+  <form [formGroup]="updateUsernameForm" class="change-username-form" (ngSubmit)="updateUsername()">
     <mat-form-field appearance="outline">
       <mat-label>Nazwa użytkownika</mat-label>
       <input matInput type="text" formControlName="username">
       <mat-error *ngIf="updateUsernameForm.get('username')?.errors?.required">Nazwa użytkownika jest wymagana</mat-error>
     </mat-form-field>
-    <button mat-raised-button color="primary" style="height: 40px" [disabled]="updateUsernameForm.invalid">
+    <button mat-raised-button color="primary" class="change-username-button" [disabled]="updateUsernameForm.invalid">
       Zapisz
     </button>
   </form>

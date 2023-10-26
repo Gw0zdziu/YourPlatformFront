@@ -87,6 +87,12 @@
   color: #fff;
   padding: 10px 6px;
   border-radius: 6px;
+  transition: 250ms ease-in-out;
+}
+
+.active2:hover{
+  background-color: #a75cf1;
+  transition: 250ms ease-in-out;
 }
 
 .nav-name{

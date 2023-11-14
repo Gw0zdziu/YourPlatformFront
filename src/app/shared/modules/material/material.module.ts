@@ -16,9 +16,29 @@ import {MatSortModule} from '@angular/material/sort';
 import {MatSnackBarModule} from "@angular/material/snack-bar";
 import {MatAutocompleteModule} from '@angular/material/autocomplete';
 import {MatTooltipModule} from "@angular/material/tooltip";
+import {MatSelectModule} from "@angular/material/select";
 
 @NgModule({
   declarations: [],
+  exports: [
+    MatToolbarModule,
+    MatSidenavModule,
+    MatButtonModule,
+    MatDividerModule,
+    MatIconModule,
+    MatListModule,
+    MatMenuModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatProgressBarModule,
+    MatTableModule,
+    MatPaginatorModule,
+    MatSortModule,
+    MatSelectModule,
+    MatSnackBarModule,
+    MatAutocompleteModule,
+    MatTooltipModule
+  ],
   imports: [
     CommonModule,
     MatToolbarModule,
@@ -34,24 +54,7 @@ import {MatTooltipModule} from "@angular/material/tooltip";
     MatTableModule,
     MatPaginatorModule,
     MatSortModule,
-    MatSnackBarModule,
-    MatAutocompleteModule,
-    MatTooltipModule
-  ],
-  exports:[
-    MatToolbarModule,
-    MatSidenavModule,
-    MatButtonModule,
-    MatDividerModule,
-    MatIconModule,
-    MatListModule,
-    MatMenuModule,
-    MatFormFieldModule,
-    MatInputModule,
-    MatProgressBarModule,
-    MatTableModule,
-    MatPaginatorModule,
-    MatSortModule,
+    MatSelectModule,
     MatSnackBarModule,
     MatAutocompleteModule,
     MatTooltipModule

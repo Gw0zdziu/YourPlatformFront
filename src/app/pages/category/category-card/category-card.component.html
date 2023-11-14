@@ -1,0 +1,15 @@
+<div class="list-body">
+  <div class="category-name">{{category.categoryName}}</div>
+  <div class="category-desc">Ilość gier: {{category.gameCount}}</div>
+  <div class="container-icon">
+    <button mat-icon-button matTooltip="Szczegóły" (click)="openDetails(category.categoryId)">
+      <mat-icon class="icon details">info</mat-icon>
+    </button>
+    <button mat-icon-button matTooltip="Edytuj" [routerLink]="['/category/edit',category.categoryId]">
+      <mat-icon class="icon edit">edit</mat-icon>
+    </button>
+    <button mat-icon-button matTooltip="Usuń" (click)="deactivateCategory(category.categoryId)">
+      <mat-icon class="icon delete">delete</mat-icon>
+    </button>
+  </div>
+</div>

@@ -5,7 +5,10 @@
   <div style="width: 100%">
     <app-menu [isMobile] = "isMobile"  [isMenuClosed]="isMenuClosed" (isMenuClosedEmitter) = "closeMenu($event)" ></app-menu>
   </div>
-  <section class="container-content" [ngClass]="!isMenuClosed && isMobile ? 'inactive' : ''"  [style.width.%]="isMobile ? '100' : '60'">
+  <div style="width: 100%">
+    <app-loader></app-loader>
+  </div>
+  <section class="container-content" [ngClass]="!isMenuClosed && isMobile ? 'inactive' : ''"  [style.width.%]="isMobile ? '90' : '50'">
     <router-outlet></router-outlet>
   </section>
 </div>

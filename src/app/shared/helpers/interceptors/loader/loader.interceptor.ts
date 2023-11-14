@@ -7,6 +7,7 @@ import {
 } from '@angular/common/http';
 import {finalize, Observable} from 'rxjs';
 import {LoaderService} from 'src/app/shared/services/loader/loader.service';
+import {error} from "@angular/compiler-cli/src/transformers/util";
 
 @Injectable()
 export class LoaderInterceptor implements HttpInterceptor {
@@ -18,7 +19,7 @@ export class LoaderInterceptor implements HttpInterceptor {
   intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
     this.loaderSvc.show();
     return next.handle(request).pipe(
-      finalize(() => this.loaderSvc.hide()),
+        finalize(() => this.loaderSvc.hide()),
     )
   }
 }

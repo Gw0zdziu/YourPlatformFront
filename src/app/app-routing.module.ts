@@ -2,7 +2,6 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import {RouterModule, Routes} from '@angular/router';
 import {HomeComponent} from 'src/app/pages/home/home.component';
-import {InformationComponent} from 'src/app/pages/information/information.component';
 import {authGuard} from "./shared/guards/auth.guard";
 import {SettingsComponent} from "./pages/settings/settings.component";
 import {CategoryListComponent} from "./pages/category/category-list/category-list.component";

@@ -10,41 +10,43 @@
           </div>
         </label>
       </div>
-      <span class="nav-name">Your Platform</span>
+      <span [ngStyle]="{'margin-left': isMobile ? '8px' : '60px'}" class="nav-name">Your Platform</span>
       <ul class="nav-list" *ngIf="!isMobile && user">
         <li class="list-route" [routerLink]="['category','list']" [routerLinkActive]="['active2']"  (click)="closeMenu()">
           <a>
             Kategorie
           </a>
         </li>
-        <li class="list-route" [routerLink]="['game','list']" [routerLinkActive]="['active2']"  (click)="closeMenu()">
-          <a>
+        <li class="list-route">
+          <a [routerLink]="['game','list']" [routerLinkActive]="['active2']">
             Gry
           </a>
         </li>
       </ul>
     </div>
-    <ng-container *ngIf="!isMobile">
-      <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
-        <mat-icon style="scale: 1.5; color: var(--secondary)">person</mat-icon>
-      </button>
-      <mat-menu #menu="matMenu">
-        <a mat-menu-item *ngIf="user" [routerLink]="['settings']">
-          <mat-icon>settings</mat-icon>
-          <span>Ustawienia</span>
-        </a>
-        <a mat-menu-item *ngIf="!user" [routerLink]="['auth','login']">
-          <mat-icon>login</mat-icon>
-          <span>Zaloguj</span>
-        </a>
-        <a mat-menu-item *ngIf="!user" [routerLink]="['auth','register']">
-          <mat-icon>person_add</mat-icon>
-          <span>Zarejestruj</span>
-        </a>
-        <a mat-menu-item *ngIf="user" (click)="logout()">
-          <mat-icon>logout</mat-icon>
-          <span>Wyloguj</span>
-        </a>
-      </mat-menu>
+    <ng-container  *ngIf="!isMobile">
+      <div [ngStyle]="{'margin-right': isMobile ? '8px' : '60px'}">
+        <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
+          <mat-icon style="scale: 1.5; color: var(--secondary)">person</mat-icon>
+        </button>
+        <mat-menu #menu="matMenu">
+          <a mat-menu-item *ngIf="user" [routerLink]="['settings']">
+            <mat-icon>settings</mat-icon>
+            <span>Ustawienia</span>
+          </a>
+          <a mat-menu-item *ngIf="!user" [routerLink]="['auth','login']">
+            <mat-icon>login</mat-icon>
+            <span>Zaloguj</span>
+          </a>
+          <a mat-menu-item *ngIf="!user" [routerLink]="['auth','register']">
+            <mat-icon>person_add</mat-icon>
+            <span>Zarejestruj</span>
+          </a>
+          <a mat-menu-item *ngIf="user" (click)="logout()">
+            <mat-icon>logout</mat-icon>
+            <span>Wyloguj</span>
+          </a>
+        </mat-menu>
+      </div>
     </ng-container>
   </nav>

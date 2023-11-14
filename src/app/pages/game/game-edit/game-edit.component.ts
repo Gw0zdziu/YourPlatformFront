@@ -2,7 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {GameService} from "../../../shared/services/http/game/game.service";
 import {ActivatedRoute, Router} from "@angular/router";
-import {map, Observable, startWith} from "rxjs";
+import {filter, findIndex, map, mergeMap, Observable, startWith} from "rxjs";
 import {CategoryNames} from "../../../shared/models/http/category/CategoryNames";
 import {NotificationService} from "../../../shared/services/snackbar/notification.service";
 import {CategoryService} from "../../../shared/services/http/category/category.service";
@@ -16,8 +16,8 @@ import {UpdateGame} from "../../../shared/models/http/game/UpdateGame";
 export class GameEditComponent implements OnInit{
   gameForm: FormGroup
   gameId: string | null
-  filteredOptions?: Observable<CategoryNames[] | undefined>
-  categories: CategoryNames[] = []
+  filteredOptions?: Observable<CategoryNames[] | undefined> | undefined
+  categoriesNames$: Observable<CategoryNames[]>
   categoryName: string;
   categoryId: string;
 
@@ -40,11 +40,7 @@ export class GameEditComponent implements OnInit{
 
   ngOnInit() {
     this.gameId = this.route.snapshot.paramMap.get('gameId')
-    this.categorySvc.getCategoriesNames().subscribe({
-      next: value => {
-        this.categories = value;
-      }
-    })
+    this.categoriesNames$ = this.categorySvc.categoriesNames$;
     this.gameSvc.getGameById(this.gameId).subscribe({
       next: value => {
         this.categoryId = value.categoryId
@@ -66,34 +62,21 @@ export class GameEditComponent implements OnInit{
 
     this.filteredOptions = this.gameForm.get('categoryId')?.valueChanges.pipe(
       startWith(''),
-      map(value  => this._filter(value || ''))
+      mergeMap(value  => this.categoriesNames$.pipe(
+          map(categories => categories.filter(category => category.categoryName.toLowerCase() === value.toLowerCase()))
+      ))
     )
   }
 
-  displayFn(categoryId: string): string {
-    if (!categoryId){
-      return ''
-    } else {
-      let index = this.categories.findIndex(x => x.categoryId === categoryId)
-      if (index > -1){
-        return this.categories[index].categoryName
-      } else {
-        return ''
-      }
+  displayFn(category: CategoryNames): string {
+      return category ? category.categoryName : '';
     }
-  }
-
-  private _filter(value: string): CategoryNames[] {
-    const filterValue = value.toLowerCase();
-    return this.categories.filter(x => x.categoryName.toLowerCase().includes(filterValue));
-  }
-
   onSubmit(){
     const updatedGame: UpdateGame = {
       gameName: this.gameForm.get('gameName')?.value,
       gameDesc: this.gameForm.get('gameDesc')?.value,
       gameRating: this.gameForm.get('gameRating')?.value,
-      categoryId: this.gameForm.get('categoryId')?.value
+      categoryId: this.gameForm.get('categoryId')?.value.categoryId,
     }
     this.gameSvc.updateGame(this.gameId, updatedGame).subscribe({
       next: () => {

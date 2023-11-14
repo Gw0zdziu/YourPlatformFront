@@ -1,3 +1,8 @@
+a{
+  text-decoration: none;
+}
+
+
 .container-nav{
   display: flex;
   flex-direction: row;
@@ -101,3 +106,5 @@
   font-weight: 500;
   color: var(--secondary);
 }
+
+

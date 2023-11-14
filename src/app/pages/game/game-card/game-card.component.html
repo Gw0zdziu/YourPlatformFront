@@ -1,0 +1,18 @@
+<div  class="list-body">
+  <div class="game-name">{{game.gameName}}</div>
+  <div>
+    <div class="game-desc">Kategoria: {{game.category.categoryName}}</div>
+    <div class="game-rating">Ocena: {{game.gameRating}} / 10</div>
+  </div>
+  <div class="container-icon">
+    <button mat-icon-button matTooltip="Szczegóły" (click)="seeGameDetails(game.gameId)">
+      <mat-icon class="icon details">info</mat-icon>
+    </button>
+    <button mat-icon-button matTooltip="Edytuj" [routerLink]="['/game/edit',game.gameId]">
+      <mat-icon class="icon edit">edit</mat-icon>
+    </button>
+    <button mat-icon-button matTooltip="Usuń" (click)="deleteGame(game.gameId)">
+      <mat-icon class="icon delete">delete</mat-icon>
+    </button>
+  </div>
+</div>

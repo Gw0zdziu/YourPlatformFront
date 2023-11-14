@@ -9,6 +9,8 @@ import {catchError, Observable, throwError} from 'rxjs';
 import {AuthService} from 'src/app/shared/services/http/auth/auth.service';
 import {Router} from '@angular/router';
 import {NotificationService} from 'src/app/shared/services/snackbar/notification.service';
+import {DialogService} from "../../../services/dialog/dialog.service";
+import {DialogRef} from "../../../services/dialog/dialogRef";
 
 @Injectable()
 export class ErrorInterceptor implements HttpInterceptor {
@@ -16,7 +18,7 @@ export class ErrorInterceptor implements HttpInterceptor {
   constructor(
     private authSvc: AuthService,
     private router: Router,
-    private notificationSvc: NotificationService
+    private notificationSvc: NotificationService,
   ) {}
 
   intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
@@ -26,9 +28,8 @@ export class ErrorInterceptor implements HttpInterceptor {
           next: () => {
             localStorage.removeItem('user');
             this.authSvc.userValue = null;
-            this.notificationSvc.openNotification('Nastąpi wylogowanie użytkownika')
-            this.router.navigateByUrl('/auth/login')
-            this.notificationSvc.openNotification('Sesja użytkownika wygasła')
+            this.router.navigateByUrl('/auth/login');
+            this.notificationSvc.openNotification('Sesja użytkownika wygasła');
           }
         })
       }

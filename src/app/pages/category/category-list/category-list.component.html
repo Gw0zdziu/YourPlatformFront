@@ -1,32 +1,24 @@
 
 <div class="list">
     <span class="container-header">Lista kategorii</span>
-    <div class="list-button" >
-      <button class="button-add" [routerLink]="['/category/create']">Dodaj</button>
-    </div>
-    <div class="container-list">
-      <ng-container *ngIf="!categoriesList.length">
-        <span>Brak kategorii</span>
-      </ng-container>
-      <div *ngFor="let category of categoriesList | slice
-                : (pagination.currentPage - 1) * pagination.pageSize
-                : pagination.currentPage * pagination.pageSize" class="list-body">
-          <div class="category-name">{{category.categoryName}}</div>
-          <div class="category-desc">Liczba gier: {{category.gameCount}}</div>
-        <div class="container-icon">
-          <button mat-icon-button matTooltip="Szczegóły" (click)="openDetails(category.categoryId)">
-            <mat-icon class="icon details">info</mat-icon>
-          </button>
-          <button mat-icon-button matTooltip="Edytuj" [routerLink]="['/category/edit',category.categoryId]">
-            <mat-icon class="icon edit">edit</mat-icon>
-          </button>
-          <button mat-icon-button matTooltip="Usuń" (click)="deactivateCategory(category.categoryId)">
-            <mat-icon class="icon delete">delete</mat-icon>
-          </button>
+    <button class="button-add" [routerLink]="['/category/create']">Dodaj</button>
+    <ng-container *ngIf="categoriesList$ | async as categories">
+      <ng-container *ngIf="categories.length else emptyList">
+        <div class="container-list">
+          <ng-container *ngFor="let category of categories | slice
+                  : (pagination.currentPage - 1) * pagination.pageSize
+                  : pagination.currentPage * pagination.pageSize" >
+            <app-category-card [category]="category" (categoryIdToSee)="openDetails($event)" (categoryIdToDeactivate)="deactivateCategory($event)" ></app-category-card>
+          </ng-container>
         </div>
+        <div class="container-pagination">
+          <app-pagination [collectionSize]="categories.length"  [firstLastButtons] = "true" [maxSize]="2" #pagination ></app-pagination>
+        </div>
+      </ng-container>
+    </ng-container>
+    <ng-template #emptyList>
+      <div class="container-list">
+        <span class="empty-list">Brak kategorii</span>
       </div>
-    </div>
-    <div class="container-pagination">
-        <app-pagination [collectionSize]="categoriesList.length"  [firstLastButtons] = "true" [maxSize]="2" #pagination ></app-pagination>
-    </div>
-  </div>
+    </ng-template>
+</div>

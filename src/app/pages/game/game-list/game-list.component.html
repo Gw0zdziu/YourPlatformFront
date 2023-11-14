@@ -1,34 +1,34 @@
 <div class="list">
   <span class="container-header">Lista gier</span>
-  <div class="list-button">
-    <button class="button-add" [routerLink]="['/game/create']">Dodaj</button>
+  <div class="categories-list">
+    <mat-form-field appearance="outline">
+      <mat-label>Kategorie</mat-label>
+      <mat-select [ngModel]="selectedCategory$ | async" (valueChange)="onSelectedCategory($event)">
+        <mat-option  [value]="0">Wszystkie</mat-option>
+        <mat-option *ngFor="let category of categoriesNameList$ | async" [value]="category.categoryId">
+          {{category.categoryName}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
   </div>
-  <div class="container-list">
-    <div *ngIf="!gamesList.length">
-      <span>Brak gier</span>
-    </div>
-    <div *ngFor="let game of gamesList | slice
-                : (pagination.currentPage - 1) * pagination.pageSize
-                : pagination.currentPage * pagination.pageSize" class="list-body">
-      <div class="game-name">{{game.gameName}}</div>
-      <div>
-        <div class="game-desc">Kategoria: {{game.category.categoryName}}</div>
-        <div class="game-rating">Ocena: {{game.gameRating}} / 10</div>
+  <button class="button-add" [routerLink]="['/game/create']">Dodaj</button>
+  <ng-container *ngIf="gamesList$ | async as games">
+    <ng-container *ngIf="games.length else emptyList">
+      <div class="container-list">
+        <ng-container *ngFor="let game of games | slice
+                  : (pagination.currentPage - 1) * pagination.pageSize
+                  : pagination.currentPage * pagination.pageSize">
+          <app-game-card [game]="game" (gameIdToDelete)="deleteGame($event)" (gameIdToSee)="openDetails($event)" ></app-game-card>
+        </ng-container>
       </div>
-      <div class="container-icon">
-        <button mat-icon-button matTooltip="Szczegóły" (click)="openDetails(game.gameId)">
-          <mat-icon class="icon details">info</mat-icon>
-        </button>
-        <button mat-icon-button matTooltip="Edytuj" [routerLink]="['/game/edit',game.gameId]">
-          <mat-icon class="icon edit">edit</mat-icon>
-        </button>
-        <button mat-icon-button matTooltip="Usuń" (click)="deleteGame(game.gameId)">
-          <mat-icon class="icon delete">delete</mat-icon>
-        </button>
+      <div class="container-pagination">
+        <app-pagination [collectionSize]="games.length"  [firstLastButtons] = "true" [maxSize]="2" #pagination ></app-pagination>
       </div>
+    </ng-container>
+  </ng-container>
+  <ng-template #emptyList>
+    <div class="container-list">
+      <span class="empty-list">Brak gier</span>
     </div>
-  </div>
-  <div class="container-pagination" >
-    <app-pagination [collectionSize]="gamesList.length"  [firstLastButtons] = "true" [maxSize]="2" #pagination ></app-pagination>
-  </div>
+  </ng-template>
 </div>

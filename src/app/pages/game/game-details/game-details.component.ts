@@ -1,7 +1,5 @@
 import {Component, Inject, OnInit} from '@angular/core';
-import {GameList} from "../../../shared/models/http/game/GameList";
 import {GameService} from "../../../shared/services/http/game/game.service";
-import {ActivatedRoute} from "@angular/router";
 import {GameData} from "../../../shared/models/http/game/GameData";
 import {CategoryService} from "../../../shared/services/http/category/category.service";
 import {DIALOG_DATA} from "../../../shared/services/dialog/dialog-tokens";

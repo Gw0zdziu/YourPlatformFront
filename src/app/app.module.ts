@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {SharedModule} from 'src/app/shared/shared.module';
@@ -21,6 +20,7 @@ import { MenuComponent } from './components/menu/menu.component';
 import { SettingsComponent } from './pages/settings/settings.component';
 import { UpdatePasswordComponent } from './components/update-password/update-password.component';
 import { UpdateUsernameComponent } from './components/update-username/update-username.component';
+import {LoaderComponent} from "./shared/components/loader/loader.component";
 
 @NgModule({
   declarations: [
@@ -42,21 +42,23 @@ import { UpdateUsernameComponent } from './components/update-username/update-use
     AppRoutingModule,
     AuthModule,
     CategoryModule,
-    GameModule,
     HttpClientModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    GameModule
   ],
   providers: [
     {
       provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true
     },
     {
-        provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true
+      provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true
     },
     {
       provide: HTTP_INTERCEPTORS, useClass: LoaderInterceptor, multi: true
-    }
+    },
+  ],
+  exports: [
   ],
   bootstrap: [AppComponent]
 })

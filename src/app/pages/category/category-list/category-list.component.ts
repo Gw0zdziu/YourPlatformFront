@@ -5,6 +5,7 @@ import {GlobalService} from "../../../shared/services/global/global.service";
 import {LoaderService} from "../../../shared/services/loader/loader.service";
 import {DialogService} from "../../../shared/services/dialog/dialog.service";
 import {CategoryDetailsComponent} from "../category-details/category-details.component";
+import {map} from "rxjs";
 
 @Component({
   selector: 'app-category-list',
@@ -12,8 +13,7 @@ import {CategoryDetailsComponent} from "../category-details/category-details.com
   styleUrls: ['./category-list.component.css']
 })
 export class CategoryListComponent implements OnInit{
-  displayedColumns: string[] = ['categoryName', 'gameCount', 'actions'];
-  categoriesList: CategoryList[] = []
+
 
 
   constructor(
@@ -24,6 +24,11 @@ export class CategoryListComponent implements OnInit{
   ) {
   }
 
+  categoriesList$ = this.categorySvc.categoriesList$
+
+  ngOnInit() {
+  }
+
   openDetails(categoryId: string) {
     const dialogRef = this.dialogSvc.open(CategoryDetailsComponent, { data: categoryId });
 
@@ -31,22 +36,17 @@ export class CategoryListComponent implements OnInit{
     });
   }
 
-  ngOnInit() {
-    this.categorySvc.getCategoriesByUserId().subscribe({
-      next: value => {
-        this.categoriesList = value;
-      }
-    })
-  }
 
   deactivateCategory(categoryId: string){
     this.categorySvc.deactivateCategory(categoryId).subscribe({
       next: () => {
-        this.loaderSvc.show()
-        this.globalSvc.refresh();
+        this.categoriesList$ = this.categoriesList$.pipe(
+          map(categories => {
+            return categories.filter(category => category.categoryId !== categoryId)
+          })
+        )
       },
       complete: () => {
-        this.loaderSvc.hide()
       }
     })
   }

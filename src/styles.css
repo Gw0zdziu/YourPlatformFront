@@ -5,7 +5,10 @@
 }
 
 html, body { height: 100%;}
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif}
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
 
 .overlay-backdrop {
   background-color: rgba(98, 98, 98, 0.25);
@@ -45,7 +48,7 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif}
 }
 
 .container-header{
-  font-size: 2rem
+  font-size: 2rem;
 }
 
 @media only screen and (max-width: 600px) {

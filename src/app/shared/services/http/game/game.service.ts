@@ -30,9 +30,7 @@ export class GameService {
     return this.http.get<GameData>(`${apiUrl}/game/${gameId}`)
   }
 
-  getGameByUserId(): Observable<GameList[]>{
-    return this.http.get<GameList[]>(`${apiUrl}/game/by/user`)
-  }
+  gamesUser$ = this.http.get<GameList[]>(`${apiUrl}/game/by/user`)
 
   deleteGame(gameId: string): Observable<void>{
     return this.http.delete<void>(`${apiUrl}/game/${gameId}`)

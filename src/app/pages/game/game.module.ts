@@ -12,9 +12,11 @@ import {MatIconModule} from '@angular/material/icon';
 import {MatTableModule} from '@angular/material/table';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
-import {ReactiveFormsModule} from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {MaterialModule} from 'src/app/shared/modules/material/material.module';
 import {SharedModule} from "../../shared/shared.module";
+import {AppModule} from "../../app.module";
+import {GameCardComponent} from "./game-card/game-card.component";
 
 
 
@@ -24,20 +26,22 @@ import {SharedModule} from "../../shared/shared.module";
     GameEditComponent,
     GameCreateComponent,
     GameDetailsComponent,
-    GameListComponent
+    GameListComponent,
+    GameCardComponent
   ],
-    imports: [
-        CommonModule,
-        GameRoutingModule,
-        RouterOutlet,
-        MatButtonModule,
-        MatIconModule,
-        MatTableModule,
-        MatFormFieldModule,
-        MatInputModule,
-        ReactiveFormsModule,
-        MaterialModule,
-        SharedModule
-    ]
+  imports: [
+    CommonModule,
+    GameRoutingModule,
+    RouterOutlet,
+    MatButtonModule,
+    MatIconModule,
+    MatTableModule,
+    MatFormFieldModule,
+    MatInputModule,
+    ReactiveFormsModule,
+    MaterialModule,
+    SharedModule,
+    FormsModule,
+  ]
 })
 export class GameModule { }

@@ -7,7 +7,7 @@
     </mat-form-field>
     <mat-form-field appearance="outline">
       <mat-label>Opis gry</mat-label>
-      <textarea formControlName="gameDesc" matInput cdkAutosizeMinRows="2" cdkAutosizeMaxRows="10"></textarea>
+      <textarea formControlName="gameDesc" matInput ></textarea>
     </mat-form-field>
     <mat-form-field appearance="outline">
       <mat-label>Ocena gry</mat-label>
@@ -16,8 +16,8 @@
     <mat-form-field appearance="outline">
       <input formControlName="categoryId" matInput [matAutocomplete]="auto" >
       <mat-label>Kategoria</mat-label>
-      <mat-autocomplete showAutocompleteList [displayWith]="displayFn.bind(this)"  #auto="matAutocomplete" >
-        <mat-option *ngFor="let option of category " [value]="option.categoryId">
+      <mat-autocomplete [displayWith]="displayFn.bind(this)" #auto="matAutocomplete" >
+        <mat-option *ngFor="let option of categoriesNames$ | async " [value]="option">
           {{option.categoryName}}
         </mat-option>
       </mat-autocomplete>

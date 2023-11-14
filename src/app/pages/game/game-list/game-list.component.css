@@ -1,93 +1,70 @@
 
 .list{
-  display:flex;
-  flex-direction: column;
-  align-items: center;
-  row-gap: 16px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-areas:
+  "header header header"
+  "menu menu add-button"
+  "content content content"
+  "pagination pagination pagination";
+  row-gap: 12px;
   margin-top: 16px
 }
 
-.list-button{
-  display: flex;
-  justify-content: flex-end;
-  width: 95%;
+.container-header{
+  grid-area: header;
+  justify-self: center;
+}
+
+.categories-list{
+  grid-area: menu;
 }
 
 .button-add {
   background-color: #8a2be2;
   border-radius: 6px;
-  border-width: 0;
+  border: 0;
   cursor: pointer;
   color: white;
   outline: none;
-  overflow: hidden;
-  padding: 12px 16px;
-  position: relative;
   text-align: center;
-  font-size: 24px;
+  font-size: 18px;
+  padding: 10px 6px;
   line-height: 24px;
+  width: 128px;
+  height: 48px;
+  grid-area: add-button;
+  justify-self: end;
+  transition: 250ms ease-in-out;
+
 }
 
 .button-add:hover{
   background-color: #a75cf1;
+  transition: 250ms ease-in-out;
+
 }
 
 .container-list{
   display: flex;
   flex-direction: column;
-  align-items: center;
+  justify-content: center;
   row-gap: 16px;
   width: 100%;
-  font-size: 32px
-}
-
-.list-body{
-  display: grid;
-  grid-template-columns: 1fr;
-  grid-template-rows: auto auto 1fr;
-  width: 95%;
-  border-radius: 6px;
-  -webkit-box-shadow: 0px 0px 7px 0px rgba(207, 207, 207, 1);
-  -moz-box-shadow: 0px 0px 7px 0px rgba(207, 207, 207, 1);
-  box-shadow: 0px 0px 7px 0px rgba(207, 207, 207, 1);
-}
-
-.game-name{
-  margin: 8px;
   font-size: 32px;
+  grid-area: content;
 }
-.game-desc, .game-rating{
-  margin: 8px;
-  font-size: 24px
+
+.empty-list{
+  text-align: center;
 }
+
 
 .container-pagination{
   display: flex;
   justify-content: center;
-  width: 100%
+  width: 100%;
+  grid-area: pagination;
 }
 
-.container-icon{
-  display:flex;
-  justify-content: flex-end;
-  align-items: center;
-  column-gap: 24px;
-  margin: 0 8px 8px 0
-}
 
-.icon{
-  scale: 2;
-
-}
-
-.details{
-  color: #004a9f
-}
-
-.edit{
-  color: #008000
-}
-
-.delete{
-  color: #ff0000
-}

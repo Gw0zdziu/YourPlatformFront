@@ -2,7 +2,6 @@ import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {AuthService} from 'src/app/shared/services/http/auth/auth.service';
 import {SignIn} from 'src/app/shared/models/http/auth/SignIn';
-import {first} from 'rxjs';
 import {ActivatedRoute, Router} from '@angular/router';
 import {NotificationService} from "../../../shared/services/snackbar/notification.service";
 

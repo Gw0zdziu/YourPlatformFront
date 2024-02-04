@@ -1,7 +1,6 @@
 import {Component, Inject, OnInit} from '@angular/core';
 import {CategoryList} from "../../../shared/models/http/category/CategoryList";
 import {CategoryService} from "../../../shared/services/http/category/category.service";
-import {ActivatedRoute} from "@angular/router";
 import {DialogRef} from "../../../shared/services/dialog/dialogRef";
 import {DIALOG_DATA} from "../../../shared/services/dialog/dialog-tokens";
 

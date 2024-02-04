@@ -1,5 +1,4 @@
 import {Component, OnInit} from '@angular/core';
-import {CategoryList} from 'src/app/shared/models/http/category/CategoryList';
 import {CategoryService} from 'src/app/shared/services/http/category/category.service';
 import {GlobalService} from "../../../shared/services/global/global.service";
 import {LoaderService} from "../../../shared/services/loader/loader.service";

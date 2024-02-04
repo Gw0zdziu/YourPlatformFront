@@ -1,9 +1,8 @@
-import {Component, OnInit} from '@angular/core';
+import {Component} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {NewCategory} from 'src/app/shared/models/http/category/NewCategory';
 import {AuthService} from 'src/app/shared/services/http/auth/auth.service';
 import {CategoryService} from 'src/app/shared/services/http/category/category.service';
-import {first} from 'rxjs';
 import {Router} from '@angular/router';
 import {NotificationService} from 'src/app/shared/services/snackbar/notification.service';
 

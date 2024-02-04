@@ -5,7 +5,6 @@ import {CategoryService} from 'src/app/shared/services/http/category/category.se
 import {ActivatedRoute, Router} from '@angular/router';
 import {NotificationService} from 'src/app/shared/services/snackbar/notification.service';
 import {UpdateCategory} from 'src/app/shared/models/http/category/UpdateCategory';
-import {CategoryList} from 'src/app/shared/models/http/category/CategoryList';
 
 @Component({
   selector: 'app-category-edit',

@@ -1,4 +1,4 @@
-import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import {Component, EventEmitter, Input, Output} from '@angular/core';
 import {NotificationService} from "../../shared/services/snackbar/notification.service";
 import {Router} from "@angular/router";
 import {AuthService} from "../../shared/services/http/auth/auth.service";

@@ -9,7 +9,7 @@ import {User} from "../../shared/models/user/User";
   templateUrl: './menu.component.html',
   styleUrls: ['./menu.component.css']
 })
-export class MenuComponent{
+export class MenuComponent implements OnInit{
 
   @Output()
   isMenuClosedEmitter = new EventEmitter<boolean>()
@@ -26,6 +26,9 @@ export class MenuComponent{
     private notificationSvc: NotificationService,
     private authSvc: AuthService
   ) {
+  }
+
+  ngOnInit() {
     this.authSvc.user.subscribe(x => this.user = x)
   }
 

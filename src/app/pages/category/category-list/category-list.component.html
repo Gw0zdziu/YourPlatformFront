@@ -10,6 +10,7 @@
                   : pagination.currentPage * pagination.pageSize" >
             <app-category-card [category]="category" (categoryIdToSee)="openDetails($event)" (categoryIdToDeactivate)="deactivateCategory($event)" ></app-category-card>
           </ng-container>
+          <ng-content select="image"></ng-content>
         </div>
         <div class="container-pagination">
           <app-pagination [collectionSize]="categories.length"  [firstLastButtons] = "true" [maxSize]="2" #pagination ></app-pagination>

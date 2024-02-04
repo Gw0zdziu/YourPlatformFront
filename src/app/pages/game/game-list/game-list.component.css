@@ -53,6 +53,7 @@
   width: 100%;
   font-size: 32px;
   grid-area: content;
+  align-items: center;
 }
 
 .empty-list{

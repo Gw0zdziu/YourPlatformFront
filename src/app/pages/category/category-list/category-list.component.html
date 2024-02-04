@@ -2,24 +2,24 @@
 <div class="list">
     <span class="container-header">Lista kategorii</span>
     <button class="button-add" [routerLink]="['/category/create']">Dodaj</button>
-    <ng-container *ngIf="categoriesList$ | async as categories">
-      <ng-container *ngIf="categories.length else emptyList">
-        <div class="container-list">
-          <ng-container *ngFor="let category of categories | slice
+    <div class="container-list">
+      <ng-container *ngIf="categoriesList$ | async as categories">
+        <ng-container *ngIf="categories.length else emptyList">
+          <div class="container-list">
+            <ng-container *ngFor="let category of categories | slice
                   : (pagination.currentPage - 1) * pagination.pageSize
                   : pagination.currentPage * pagination.pageSize" >
-            <app-category-card [category]="category" (categoryIdToSee)="openDetails($event)" (categoryIdToDeactivate)="deactivateCategory($event)" ></app-category-card>
-          </ng-container>
-          <ng-content select="image"></ng-content>
-        </div>
-        <div class="container-pagination">
-          <app-pagination [collectionSize]="categories.length"  [firstLastButtons] = "true" [maxSize]="2" #pagination ></app-pagination>
-        </div>
+              <app-category-card [category]="category" (categoryId)="openDetails($event)" (categoryIdToDeactivate)="deactivateCategory($event)" ></app-category-card>
+            </ng-container>
+          </div>
+          <div class="container-pagination">
+            <app-pagination [collectionSize]="categories.length"  [firstLastButtons] = "true" [maxSize]="2" #pagination ></app-pagination>
+          </div>
+        </ng-container>
+        <ng-template #emptyList>
+          <app-empty-list [emptyListMessage]="emptyListCategoryMessage">
+          </app-empty-list>
+        </ng-template>
       </ng-container>
-    </ng-container>
-    <ng-template #emptyList>
-      <div class="container-list">
-        <span class="empty-list">Brak kategorii</span>
-      </div>
-    </ng-template>
+    </div>
 </div>

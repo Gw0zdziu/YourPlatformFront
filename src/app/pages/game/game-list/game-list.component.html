@@ -12,23 +12,21 @@
     </mat-form-field>
   </div>
   <button class="button-add" [routerLink]="['/game/create']">Dodaj</button>
+  <div class="container-list">
   <ng-container *ngIf="gamesList$ | async as games">
     <ng-container *ngIf="games.length else emptyList">
-      <div class="container-list">
         <ng-container *ngFor="let game of games | slice
                   : (pagination.currentPage - 1) * pagination.pageSize
                   : pagination.currentPage * pagination.pageSize">
           <app-game-card [game]="game" (gameIdToDelete)="deleteGame($event)" (gameIdToSee)="openDetails($event)" ></app-game-card>
         </ng-container>
-      </div>
       <div class="container-pagination">
         <app-pagination [collectionSize]="games.length"  [firstLastButtons] = "true" [maxSize]="2" #pagination ></app-pagination>
       </div>
     </ng-container>
+      <ng-template #emptyList>
+        <app-empty-list [emptyListMessage]="emptyListGameMessage"></app-empty-list>
+      </ng-template>
   </ng-container>
-  <ng-template #emptyList>
-    <div class="container-list">
-      <span class="empty-list">Brak gier</span>
-    </div>
-  </ng-template>
+  </div>
 </div>

@@ -2,7 +2,7 @@
   display: grid;
   grid-template-columns: 1fr;
   grid-template-rows: auto auto 1fr;
-  width: 100%;
+  min-width: 512px;
   border-radius: 6px;
   -webkit-box-shadow: 0 0 7px 0 rgba(207, 207, 207, 1);
   -moz-box-shadow: 0 0 7px 0 rgba(207, 207, 207, 1);

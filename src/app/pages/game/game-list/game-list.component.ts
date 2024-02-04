@@ -1,11 +1,8 @@
-import {AfterViewInit, ChangeDetectionStrategy, ChangeDetectorRef, Component} from '@angular/core';
+import {Component} from '@angular/core';
 import {GameService} from 'src/app/shared/services/http/game/game.service';
-import {LoaderService} from 'src/app/shared/services/loader/loader.service';
 import {DialogService} from "../../../shared/services/dialog/dialog.service";
 import {GameDetailsComponent} from "../game-details/game-details.component";
-import {BehaviorSubject, combineLatestWith, EMPTY, filter, map, Observable} from "rxjs";
-import {CategoryNames} from "../../../shared/models/http/category/CategoryNames";
-import {GameList} from "../../../shared/models/http/game/GameList";
+import {BehaviorSubject, combineLatestWith, map, tap} from "rxjs";
 import {CategoryService} from "../../../shared/services/http/category/category.service";
 
 @Component({
@@ -14,7 +11,8 @@ import {CategoryService} from "../../../shared/services/http/category/category.s
   styleUrls: ['./game-list.component.css'],
 })
 export class GameListComponent {
-  selectedCategorySubject = new BehaviorSubject<string>('');
+  emptyListGameMessage = 'Brak gier';
+  selectedCategorySubject = new BehaviorSubject<string>('0');
   selectedCategory$ = this.selectedCategorySubject.asObservable();
   constructor(
     private gameSvc: GameService,
@@ -31,7 +29,8 @@ export class GameListComponent {
           } else {
             return games.filter(game => game.categoryId === selectedCategory)
           }
-        })
+        }),tap(x => console.log(x))
+
     )
 
 

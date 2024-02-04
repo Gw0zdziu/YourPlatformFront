@@ -12,7 +12,7 @@ import {map} from "rxjs";
   styleUrls: ['./category-list.component.css']
 })
 export class CategoryListComponent implements OnInit{
-
+  emptyListCategoryMessage = 'Brak kategorii';
 
 
   constructor(
@@ -49,4 +49,6 @@ export class CategoryListComponent implements OnInit{
       }
     })
   }
+
+  protected readonly length = length;
 }

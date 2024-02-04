@@ -9,14 +9,14 @@ import {CategoryList} from "../../../shared/models/http/category/CategoryList";
 export class CategoryCardComponent {
   @Input() category: CategoryList
   @Output() categoryIdToDeactivate = new EventEmitter<string>();
-  @Output() categoryIdToSee = new EventEmitter<string>();
+  @Output() categoryId = new EventEmitter<string>();
 
   deactivateCategory(categoryId: string): void{
     this.categoryIdToDeactivate.emit(categoryId)
   }
 
   openDetails(categoryId: string): void{
-    this.categoryIdToSee.emit(categoryId)
+    this.categoryId.emit(categoryId)
   }
 
 }

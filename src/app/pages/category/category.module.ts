@@ -10,6 +10,7 @@ import { MaterialModule } from 'src/app/shared/modules/material/material.module'
 import { ReactiveFormsModule } from '@angular/forms';
 import { SharedModule } from 'src/app/shared/shared.module';
 import {CategoryCardComponent} from "./category-card/category-card.component";
+import { EmptyListComponent } from '../../shared/components/empty-list/empty-list.component';
 
 
 
@@ -20,14 +21,18 @@ import {CategoryCardComponent} from "./category-card/category-card.component";
     CategoryCreateComponent,
     CategoryDetailsComponent,
     CategoryListComponent,
-    CategoryCardComponent
+    CategoryCardComponent,
+    EmptyListComponent
   ],
-    imports: [
-        CommonModule,
-        CategoryRoutingModule,
-        MaterialModule,
-        ReactiveFormsModule,
-        SharedModule
-    ]
+  exports: [
+    EmptyListComponent
+  ],
+  imports: [
+    CommonModule,
+    CategoryRoutingModule,
+    MaterialModule,
+    ReactiveFormsModule,
+    SharedModule
+  ]
 })
 export class CategoryModule { }

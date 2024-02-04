@@ -17,6 +17,7 @@ import {MaterialModule} from 'src/app/shared/modules/material/material.module';
 import {SharedModule} from "../../shared/shared.module";
 import {AppModule} from "../../app.module";
 import {GameCardComponent} from "./game-card/game-card.component";
+import {CategoryModule} from "../category/category.module";
 
 
 
@@ -42,6 +43,7 @@ import {GameCardComponent} from "./game-card/game-card.component";
     MaterialModule,
     SharedModule,
     FormsModule,
+    CategoryModule,
   ]
 })
 export class GameModule { }
